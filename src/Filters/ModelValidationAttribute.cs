@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace Gestaoaju.Filters
 {
@@ -13,7 +14,7 @@ namespace Gestaoaju.Filters
         {
             if (filterContext.ActionArguments.Any(arg => arg.Value == null))
             {
-                filterContext.HttpContext.Response.StatusCode = 400;
+                filterContext.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
                 filterContext.Result = new EmptyResult();
 
                 return;
@@ -26,8 +27,8 @@ namespace Gestaoaju.Filters
                     .Select(e => e.ErrorMessage)
                     .ToArray();
 
-                filterContext.HttpContext.Response.StatusCode = 422;
-                filterContext.Result = new JsonResult(new { errors = errors });
+                filterContext.HttpContext.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
+                filterContext.Result = new JsonResult(errors);
             }
         }
     }

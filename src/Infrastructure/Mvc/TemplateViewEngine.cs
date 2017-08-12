@@ -18,20 +18,20 @@ namespace Gestaoaju.Infrastructure.Mvc
 {
     public class TemplateViewEngine
     {
-        private readonly IRazorViewEngine viewEngine;
-        private readonly ITempDataProvider tempDataProvider;
-        private readonly IServiceProvider serviceProvider;
         private readonly IHostingEnvironment env;
+        private readonly IServiceProvider serviceProvider;
+        private readonly ITempDataProvider tempDataProvider;
+        private readonly IRazorViewEngine viewEngine;
 
-        public TemplateViewEngine(IHostingEnvironment env, IRazorViewEngine viewEngine,
-            ITempDataProvider tempDataProvider, IServiceProvider serviceProvider)
+        public TemplateViewEngine(IHostingEnvironment env, IServiceProvider serviceProvider,
+            ITempDataProvider tempDataProvider, IRazorViewEngine viewEngine)
         {
             this.env = env;
-            this.viewEngine = viewEngine;
-            this.tempDataProvider = tempDataProvider;
             this.serviceProvider = serviceProvider;
+            this.tempDataProvider = tempDataProvider;
+            this.viewEngine = viewEngine;
         }
-        
+
         public async Task<string> RenderToStringAsync<TModel>(string viewName, TModel model)
         {
             var viewResult = viewEngine.GetView(env.ContentRootPath, viewName, false);

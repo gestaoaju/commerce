@@ -1,0 +1,15 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/gestaoaju.min.css",
+    "inputFiles": []
+  },
+  {
+    "outputFileName": "wwwroot/js/gestaoaju.min.js",
+    "inputFiles": [],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

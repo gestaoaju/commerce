@@ -23,5 +23,12 @@ namespace Gestaoaju.Extensions
             var jsonContent = new StringContent(content, Encoding.UTF8, "application/json");
             return await httpClient.PostAsync(requestUri, jsonContent);
         }
+
+        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient,
+            string requestUri)
+        {
+            var jsonContent = new StringContent("{}", Encoding.UTF8, "application/json");
+            return await httpClient.PostAsync(requestUri, jsonContent);
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Gestaoaju.Results.Common
 {
     public class ModelErrorsJson : JsonResult
     {
-        public ModelErrorsJson(params string[] errors) : base(new { errors = errors })
+        public ModelErrorsJson(params string[] errors) : base(errors)
         {
             StatusCode = StatusCodes.Status422UnprocessableEntity;
         }

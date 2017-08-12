@@ -1,6 +1,11 @@
-﻿using Gestaoaju.Infrastructure.Logging;
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+using Gestaoaju.Extensions;
+using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
 using Gestaoaju.Infrastructure.Mvc;
+using Gestaoaju.Infrastructure.Tasks;
 using Gestaoaju.Models.EntityModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,14 +26,17 @@ namespace Gestaoaju
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
-                
+
             Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            
+            services.AddMvc(options =>
+            {
+                options.UseCustomFilters();
+            });
+
             services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseSqlServer(Configuration["Database:ConnectionString"]);
@@ -37,6 +45,7 @@ namespace Gestaoaju
             services.AddTransient<ApplicationContext>();
             services.AddTransient<IErrorLogger, SentryLogger>();
             services.AddTransient<IMailer, SmtpMailer>();
+            services.AddSingleton<ITaskHandler, TaskHandler>();
             services.AddTransient<TemplateViewEngine>();
         }
 
@@ -52,7 +61,6 @@ namespace Gestaoaju
                 app.UseBrowserLink();
             }
 
-            app.UseStaticFiles();
             app.UseMvc();
         }
     }

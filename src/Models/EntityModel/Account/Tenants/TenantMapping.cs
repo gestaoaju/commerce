@@ -9,16 +9,17 @@ namespace Gestaoaju.Models.EntityModel.Account.Tenants
     {
         public static void MapTenant(this ModelBuilder modelBuilder)
         {
-            var entity = modelBuilder.Entity<Tenant>();
+            modelBuilder.Entity<Tenant>(entity =>
+            {
+                entity.HasKey(p => p.Id);
 
-            entity.HasKey(p => p.Id);
+                entity.Property(p => p.Id).UseSqlServerIdentityColumn();
+                entity.Property(p => p.Owner).HasMaxLength(80).IsRequired();
+                entity.Property(p => p.CreatedAt).IsRequired();
+                entity.Property(p => p.DeactivatedAt);
 
-            entity.Property(p => p.Id).UseSqlServerIdentityColumn();
-            entity.Property(p => p.Owner).HasMaxLength(80).IsRequired();
-            entity.Property(p => p.CreatedAt).IsRequired();
-            entity.Property(p => p.DeactivatedAt);
-
-            entity.HasMany(p => p.Users).WithOne(p => p.Tenant).HasForeignKey(p => p.TenantId);
+                entity.HasMany(p => p.Users).WithOne(p => p.Tenant).HasForeignKey(p => p.TenantId);
+            });
         }
     }
 }

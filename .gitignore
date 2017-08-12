@@ -25,9 +25,9 @@ _UpgradeReport_Files/
 bin/
 obj/
 temp/
+publish/
 Settings/
 TestResults/
-Publish/
 ###################
 # Web publish log #
 ###################

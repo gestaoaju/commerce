@@ -11,15 +11,6 @@
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
-        },
-        {
-            "taskName": "test",
-            "args": [
-                "${workspaceRoot}/test/Gestaoaju.Test.csproj"
-            ],
-            "isTestCommand": true,
-            "showOutput": "always",
-            "problemMatcher": "$msCompile"
         }
     ]
 }

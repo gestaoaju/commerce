@@ -9,20 +9,22 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
     {
         public static void MapUser(this ModelBuilder modelBuilder)
         {
-            var entity = modelBuilder.Entity<User>();
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(p => new { p.Id, p.TenantId });
+                entity.HasAlternateKey(p => p.Email);
 
-            entity.HasKey(p => new { p.Id, p.TenantId });
-            
-            entity.Property(p => p.Id).UseSqlServerIdentityColumn();
-            entity.Property(p => p.Name).HasMaxLength(80).IsRequired();
-            entity.Property(p => p.Email).HasMaxLength(80).IsRequired();
-            entity.Property(p => p.Salt).HasMaxLength(50).IsRequired();
-            entity.Property(p => p.Password).HasMaxLength(255).IsRequired();
-            entity.Property(p => p.Token).HasMaxLength(80);
-            entity.Property(p => p.LastLogin).IsRequired();
-            entity.Property(p => p.LastChangePassword).IsRequired();
+                entity.Property(p => p.Id).UseSqlServerIdentityColumn();
+                entity.Property(p => p.Name).HasMaxLength(80).IsRequired();
+                entity.Property(p => p.Email).HasMaxLength(80).IsRequired();
+                entity.Property(p => p.Salt).HasMaxLength(50).IsRequired();
+                entity.Property(p => p.Password).HasMaxLength(255).IsRequired();
+                entity.Property(p => p.Token).HasMaxLength(80);
+                entity.Property(p => p.LastLogin).IsRequired();
+                entity.Property(p => p.LastChangePassword).IsRequired();
 
-            entity.HasOne(p => p.Tenant).WithMany(p => p.Users).HasForeignKey(p => p.TenantId);
+                entity.HasOne(p => p.Tenant).WithMany(p => p.Users).HasForeignKey(p => p.TenantId);
+            });
         }
     }
 }
