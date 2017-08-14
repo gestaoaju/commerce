@@ -28,6 +28,7 @@ temp/
 publish/
 Settings/
 TestResults/
+node_modules
 ###################
 # Web publish log #
 ###################
