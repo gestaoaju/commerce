@@ -1,6 +1,9 @@
 {
     "files.exclude": {
+        "**/.vscode": true,
         "**/bin": true,
-        "**/obj": true
+        "**/obj": true,
+        "**/wwwroot": true,
+        "**/node_modules": true
     }
 }

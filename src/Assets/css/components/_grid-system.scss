@@ -1,0 +1,89 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "clearfix";
+@import "cross-browser";
+@import "palette";
+@import "screen";
+
+$max-columns: 12;
+
+@mixin column-size($screen-size)
+{
+    @for $column from 1 through $max-columns
+    {
+        .grid-col.#{$screen-size}-#{$column}
+        {
+            width: percentage($column / $max-columns);
+        }
+    }
+}
+
+@mixin column-hidden($screen-size)
+{
+    .hide-#{$screen-size}
+    {
+        display: none;
+    }
+}
+
+.grid-row
+{
+    @include clearfix();
+    margin: 0 -15px;
+
+    &.collapse
+    {
+        margin: 0;
+
+        .grid-col
+        {
+            padding: 0;
+        }
+    }
+}
+
+.grid-row,
+.grid-col
+{
+    @include box-sizing(border-box);
+}
+
+.grid-col
+{
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    padding: 0 15px;
+}
+
+@media #{$tiny-screen}
+{
+    @include column-size(tiny);
+    @include column-hidden(tiny);
+}
+
+@media #{$compact-screen}
+{
+    @include column-size(compact);
+    @include column-hidden(compact);
+}
+
+@media #{$small-screen}
+{
+    @include column-size(small);
+    @include column-hidden(small);
+}
+
+@media #{$medium-screen}
+{
+    @include column-size(medium);
+    @include column-hidden(medium);
+}
+
+@media #{$large-screen}
+{
+    @include column-size(large);
+    @include column-hidden(large);
+}

@@ -29,6 +29,7 @@ publish/
 Settings/
 TestResults/
 node_modules
+wwwroot
 ###################
 # Web publish log #
 ###################

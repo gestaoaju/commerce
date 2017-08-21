@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Gestaoaju

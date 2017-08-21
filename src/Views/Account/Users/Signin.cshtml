@@ -1,0 +1,89 @@
+@*
+    Copyright (c) gestaoaju.com.br - All rights reserved.
+    Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+*@
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div id="signin">
+    <app-message :visible="error" :mode="'danger'">
+        <div class="group">
+            Ocorreu algum problema. Por favor tente novamente.
+        </div>
+        <button type="button" class="small outline" v-on:click="tryAgain()">
+            Tentar novamente
+        </button>
+    </app-message>
+
+    <app-message :visible="invalid" :mode="'danger'">
+        <div class="group">
+            Para prosseguir você deve informar seu e-mail e senha corretamente.
+        </div>
+        <button type="button" class="small outline" v-on:click="gotIt()">
+            Entendi
+        </button>
+    </app-message>
+
+    <app-message :visible="failed" :mode="'danger'">
+        <div class="group">
+            E-mail e/ou senha estão incorretos.
+        </div>
+        <button type="button" class="small outline" v-on:click="tryAgain()">
+            Tentar novamente
+        </button>
+        <button type="button" class="small outline">
+            Redefinir minha senha
+        </button>
+    </app-message>
+
+    <div class="sign-form">
+        <div class="container">
+            <div class="card">
+                <div class="group text-center">
+                    <a href="/">
+                        <img src="/img/logo.png" alt="gestaoaju" />
+                    </a>
+                </div>
+                <a href="/" class="as-button block bordered facebook">
+                    Entrar com o facebook
+                </a>
+                <div class="or-line">
+                    <span>ou</span>
+                </div>
+                <p>
+                    Entrar com sua conta no gestaoaju:
+                </p>
+                <form v-on:submit.prevent="signin()">
+                    <div class="group">
+                        <input type="text" v-model="username" maxlength="80" placeholder="E-mail"
+                            :disabled="loading" autofocus />
+                    </div>
+                    <div class="group">
+                        <input type="password" v-model="password" maxlength="20" placeholder="Senha"
+                            :disabled="loading">
+                        <a href="/forgot-password" class="font-11">
+                            Esqueci minha senha
+                        </a>
+                    </div>
+                    <div class="group">
+                        <button type="submit" class="block shadow large sun-flower" :disabled="loading">
+                            <span v-show="!loading">Entrar</span>
+                            <span class="loading small" v-show="loading"></span>
+                        </button>
+                    </div>
+                    <p>
+                        Não possui uma conta?
+                        <a href="/signup">
+                            Criar conta
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/signin.min.js" asp-append-version="true"></script>
+}

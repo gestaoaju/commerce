@@ -1,11 +1,21 @@
+@*
+    Copyright (c) gestaoaju.com.br - All rights reserved.
+    Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+*@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gestaoaju</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/common.min.css" asp-append-version="true">
+    @RenderSection("styles", required: false)
+    <title>Gestaoaju</title>
 </head>
 <body>
     @RenderBody()
+    <script type="text/javascript" src="/js/common.min.js" asp-append-version="true"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

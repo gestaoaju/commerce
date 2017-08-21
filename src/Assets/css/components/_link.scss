@@ -1,0 +1,95 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "cross-browser";
+@import "palette";
+
+@mixin new-link-color($name, $color)
+{
+    a.#{$name},
+    .as-link.#{$name}
+    {
+        color: $color;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:active:hover,
+        &:active:focus
+        {
+            color: $color;
+        }
+
+        &[disabled]:hover,
+        &[disabled]:focus
+        {
+            color: $color;
+        }
+    }
+}
+
+a,
+.as-link
+{
+    color: $belize-hole;
+    text-decoration: none;
+    @include transition(color 0.25s ease-out, color 0.25s ease-out);
+
+    &:hover
+    {
+        text-decoration: underline;
+    }
+}
+
+.as-link
+{
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    text-transform: none;
+    font-size: 12pt;
+    @include box-shadow(none);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:hover,
+    &:active:focus
+    {
+        color: $belize-hole;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    &[disabled]:hover,
+    &[disabled]:focus
+    {
+        color: $belize-hole;
+        background-color: transparent;
+        cursor: not-allowed;
+        text-decoration: underline;
+    }
+}
+
+@include new-link-color(abestios, $abestios);
+@include new-link-color(alizarin, $alizarin);
+@include new-link-color(amethyst, $amethyst);
+@include new-link-color(belize-hole, $belize-hole);
+@include new-link-color(carrot, $carrot);
+@include new-link-color(clouds, $clouds);
+@include new-link-color(concrete, $concrete);
+@include new-link-color(emerald, $emerald);
+@include new-link-color(green-sea, $green-sea);
+@include new-link-color(midnight-blue, $midnight-blue);
+@include new-link-color(nephritis, $nephritis);
+@include new-link-color(orange, $orange);
+@include new-link-color(peter-river, $peter-river);
+@include new-link-color(pomegranate, $pomegranate);
+@include new-link-color(pumpkin, $pumpkin);
+@include new-link-color(silver, $silver);
+@include new-link-color(sun-flower, $sun-flower);
+@include new-link-color(turquoise, $turquoise);
+@include new-link-color(wet-asphalt, $wet-asphalt);
+@include new-link-color(white, $white);
+@include new-link-color(wisteria, $wisteria);

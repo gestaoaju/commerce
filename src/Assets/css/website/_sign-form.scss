@@ -1,0 +1,63 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "../components/palette";
+
+.sign-form
+{
+    background-color: $clouds;
+    min-height: 100%;
+
+    img
+    {
+        max-width: 100%;
+    }
+
+    button
+    {
+        color: $midnight-blue;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 14pt;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:active:hover,
+        &:active:focus
+        {
+            color: $midnight-blue;
+        }
+
+        &[disabled]
+        {
+            box-shadow: none;
+            opacity: 1;
+        }
+    }
+
+    .card
+    {
+        background: $white;
+        padding: 15px;
+        margin: 0 auto;
+        max-width: 480px;
+        -webkit-box-shadow: 0 1px 1px darken($white, 25%);
+        box-shadow: 0 1px 1px darken($white, 25%);
+    }
+
+    .or-line
+    {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid $silver;
+        line-height: 0.1em;
+        margin: 25px 0 25px 0;
+
+        span
+        {
+            background: $white;
+            padding: 0 20px;
+        }
+    }
+}

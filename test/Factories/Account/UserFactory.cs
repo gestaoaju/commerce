@@ -34,7 +34,7 @@ namespace Gestaoaju.Factories.Account
 
             if (authenticated)
             {
-                user.Token = new AccessToken().ToString();
+                user.AccessCode = new AccessCode().ToString();
             }
 
             user = context.Users.Add(user).Entity;

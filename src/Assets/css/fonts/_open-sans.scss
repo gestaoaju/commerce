@@ -1,0 +1,29 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@mixin font-definition($name, $style, $weight)
+{
+    @font-face
+    {
+        font-family: "open-sans";
+        src: url("/fonts/#{$name}.eot");
+        src: url("/fonts/#{$name}.eot?#iefix") format("embedded-opentype"),
+             url("/fonts/#{$name}.woff2") format("woff2"),
+             url("/fonts/#{$name}.woff") format("woff"),
+             url("/fonts/#{$name}.ttf") format("truetype"),
+             url("/fonts/#{$name}.svg##{$weight}") format("svg");
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
+@include font-definition(OpenSans-Bold, normal, bold);
+@include font-definition(OpenSans-BoldItalic, italic, bold);
+@include font-definition(OpenSans-ExtraBold, normal, 800);
+@include font-definition(OpenSans-ExtraBoldItalic, italic, 800);
+@include font-definition(OpenSans-Italic, italic, normal);
+@include font-definition(OpenSans-Light, normal, 300);
+@include font-definition(OpenSans-LightItalic, italic, 300);
+@include font-definition(OpenSans-Regular, normal, normal);
+@include font-definition(OpenSans-Semibold, normal, 600);
+@include font-definition(OpenSans-SemiboldItalic, italic, 600);

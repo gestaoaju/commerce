@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SharpRaven.Core.Configuration;
 
 namespace Gestaoaju
 {
@@ -42,6 +43,8 @@ namespace Gestaoaju
                 options.UseSqlServer(Configuration["Database:ConnectionString"]);
             });
 
+            services.Configure<RavenOptions>(Configuration.GetSection("Sentry"));
+
             services.AddTransient<ApplicationContext>();
             services.AddTransient<IErrorLogger, SentryLogger>();
             services.AddTransient<IMailer, SmtpMailer>();
@@ -61,6 +64,7 @@ namespace Gestaoaju
                 app.UseBrowserLink();
             }
 
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

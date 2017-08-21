@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace Gestaoaju.Infrastructure.Security
 {
-    public class AccessToken
+    public class AccessCode
     {
         private byte[] time;
         private byte[] key;
 
-        public AccessToken()
+        public AccessCode()
         {
             time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
             key = Guid.NewGuid().ToByteArray();

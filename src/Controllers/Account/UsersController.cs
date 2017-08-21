@@ -34,7 +34,7 @@ namespace Gestaoaju.Controllers.Account
         }
 
         [HttpGet, Route("signin")]
-        public async Task<ActionResult> Signin()
+        public async Task<IActionResult> Signin()
         {
             if (Request.AccessToken() != null)
             {
@@ -48,13 +48,13 @@ namespace Gestaoaju.Controllers.Account
         }
 
         [HttpPost, Route("signin")]
-        public async Task<ActionResult> Signin([FromBody] SigninViewModel viewModel)
+        public async Task<IActionResult> Signin([FromBody] SigninViewModel viewModel)
         {
             UserAuthentication authentication = new UserAuthentication(context);
 
             if (await authentication.SigninAsync(viewModel.Email, viewModel.Password))
             {
-                Response.SetAccessToken(authentication.User.Token);
+                Response.SetAccessToken(authentication.User.AccessCode);
                 return Ok();
             }
 
@@ -62,7 +62,7 @@ namespace Gestaoaju.Controllers.Account
         }
 
         [HttpGet, Route("signout")]
-        public async Task<ActionResult> Signout()
+        public async Task<IActionResult> Signout()
         {
             UserAuthentication authentication = new UserAuthentication(context);
 
@@ -77,7 +77,7 @@ namespace Gestaoaju.Controllers.Account
         [HttpGet, Route("signup")]
         public ActionResult Signup()
         {
-            return View("~/Views/Account/Users/SignupSoon.cshtml");
+            return View("~/Views/Account/Users/Signup.cshtml");
         }
 
         [HttpPost, Route("signup")]
@@ -101,7 +101,7 @@ namespace Gestaoaju.Controllers.Account
                 )
             ));
 
-            Response.SetAccessToken(userSignup.User.Token);
+            Response.SetAccessToken(userSignup.User.AccessCode);
 
             return Ok();
         }

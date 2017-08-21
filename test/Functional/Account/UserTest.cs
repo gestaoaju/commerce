@@ -26,7 +26,7 @@ namespace Gestaoaju.Functional.Account
             server.ApplicationContext.Entry(user).Reload();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(user.Token);
+            Assert.NotNull(user.AccessCode);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Gestaoaju.Functional.Account
             server.ApplicationContext.Entry(user).Reload();
 
             Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
-            Assert.Null(user.Token);
+            Assert.Null(user.AccessCode);
         }
 
         [Fact]
@@ -107,13 +107,13 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.ApplicationContext.CreateUser(authenticated: true);
-            var response = await server.CreateClient(accessToken: user.Token).GetAsync("signout");
+            var response = await server.CreateClient(accessToken: user.AccessCode).GetAsync("signout");
 
             server.ApplicationContext.Entry(user).Reload();
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
             Assert.Equal("/signin", response.Headers.Location.ToString());
-            Assert.Null(user.Token);
+            Assert.Null(user.AccessCode);
         }
     }
 }

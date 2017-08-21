@@ -1,0 +1,268 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "cross-browser";
+@import "palette";
+
+@mixin new-button-color($name, $text-color, $bg-color)
+{
+    button.#{$name},
+    .as-button.#{$name}
+    {
+        color: $text-color;
+        background-color: $bg-color;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:active:hover,
+        &:active:focus
+        {
+            color: $text-color;
+            background-color: darken($bg-color, 10%);
+
+            &.bordered,
+            &.bordered
+            {
+                border-bottom: 5px solid darken($bg-color, 15%);
+            }
+        }
+
+        &[disabled]:hover,
+        &[disabled]:focus
+        {
+            color: $text-color;
+            background-color: $bg-color;
+        }
+    }
+
+    button.#{$name}.outline,
+    .as-button.#{$name}.outline
+    {
+        color: $bg-color;
+        border-color: $bg-color;
+        background-color: transparent;
+
+        &:hover,
+        &:focus
+        {
+            color: $text-color;
+            border-color: $bg-color;
+            background-color: $bg-color;
+        }
+
+        &[disabled]:hover,
+        &[disabled]:focus
+        {
+            color: $bg-color;
+            border-color: $bg-color;
+            background-color: transparent;
+            text-decoration: none;
+        }
+    }
+
+    button.#{$name}.bordered,
+    .as-button.#{$name}.bordered
+    {
+        border-bottom: 5px solid darken($bg-color, 5%);
+    }
+}
+
+button,
+.as-button
+{
+    display: inline-block;
+    padding: 10px 16px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;    
+    color: $concrete;
+    background-image: none;
+    background-color: $white;
+    border: 1px solid transparent;
+    @include touch-action(manipulation);
+    @include transition(background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out);
+    @include user-select(none);
+
+    &:active,
+    &:focus
+    {
+        outline: 0 !important;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:hover,
+    &:active:focus
+    {
+        color: $white;
+        background-color: $concrete;
+        text-decoration: none;
+
+        &.bordered,
+        &.bordered
+        {
+            border-bottom: 5px solid darken($concrete, 5%);
+        }
+    }
+
+    &[disabled]:hover,
+    &[disabled]:focus
+    {
+        color: $concrete;
+        background-color: $white;
+        cursor: not-allowed;
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:active:focus
+    {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+
+    &[disabled]
+    {
+        cursor: not-allowed;
+        @include opacity(.65);
+        @include box-shadow(none);
+    }
+
+    &.block
+    {
+        display: block;
+        width: 100%;
+
+        + .block
+        {
+            margin-top: 5px;
+        }
+    }
+
+    &.bordered
+    {
+        border-bottom: 5px solid $clouds;
+    }
+
+    &.shadow
+    {
+        @include box-shadow(0 2px 2px darken($white, 25%));
+    }
+}
+
+button.outline,
+.as-button.outline
+{
+    color: $concrete;
+    border-color: $concrete;
+    background-color: transparent;
+
+    &:hover,
+    &:focus
+    {
+        color: $concrete;
+        border-color: $white;
+        background-color: $white;
+    }
+
+    &[disabled]:hover,
+    &[disabled]:focus
+    {
+        color: $concrete;
+        border-color: $concrete;
+        background-color: transparent;
+        text-decoration: none;
+    }
+}
+
+button.large,
+.as-button.large
+{
+    padding: 12px 18px;
+    font-size: 13pt;
+}
+
+button.small,
+.as-button.small
+{
+    padding: 6px 10px;
+    font-size: 11pt;
+}
+
+button.card,
+.as-button.card
+{
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+
+    .card-info
+    {
+        position: relative;
+        height: 120px;
+        padding: 10px;
+        overflow: hidden;
+        text-transform: none;
+        text-align: right;
+        font-size: 10pt;
+
+        .value
+        {
+            font-size: 22pt;
+        }
+
+        .fa
+        {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 72pt;
+            color: rgba(255, 255, 255, 0.25);
+        }
+    }
+
+    .card-title
+    {
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.15);
+        padding: 10px;
+
+        .fa
+        {
+            font-size: 14pt;
+            float: right;
+        }
+    }
+}
+
+@include new-button-color(abestios, $white, $abestios);
+@include new-button-color(alizarin, $white, $alizarin);
+@include new-button-color(amethyst, $white, $amethyst);
+@include new-button-color(belize-hole, $white, $belize-hole);
+@include new-button-color(carrot, $white, $carrot);
+@include new-button-color(clouds, $white, $clouds);
+@include new-button-color(concrete, $white, $concrete);
+@include new-button-color(emerald, $white, $emerald);
+@include new-button-color(facebook, $white, $facebook);
+@include new-button-color(green-sea, $white, $green-sea);
+@include new-button-color(midnight-blue, $white, $midnight-blue);
+@include new-button-color(nephritis, $white, $nephritis);
+@include new-button-color(orange, $white, $orange);
+@include new-button-color(peter-river, $white, $peter-river);
+@include new-button-color(pomegranate, $white, $pomegranate);
+@include new-button-color(pumpkin, $white, $pumpkin);
+@include new-button-color(silver, $white, $silver);
+@include new-button-color(sun-flower, $white, $sun-flower);
+@include new-button-color(turquoise, $white, $turquoise);
+@include new-button-color(wet-asphalt, $white, $wet-asphalt);
+@include new-button-color(white, $white, $white);
+@include new-button-color(wisteria, $white, $wisteria);

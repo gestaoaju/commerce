@@ -49,14 +49,14 @@ namespace Gestaoaju.Models.ServiceModel.Account
 
                 if (User.Password == passwordHash.ToString())
                 {
-                    User.Token = new AccessToken().ToString();
+                    User.AccessCode = new AccessCode().ToString();
                     User.LastLogin = DateTime.UtcNow;
 
                     await Context.SaveChangesAsync();
                 }
             }
 
-            return User != null && User.Token != null;
+            return User != null && User.AccessCode != null;
         }
 
         public async Task<bool> SignoutAsync(string token)
@@ -67,7 +67,7 @@ namespace Gestaoaju.Models.ServiceModel.Account
 
             if (User != null)
             {
-                User.Token = null;
+                User.AccessCode = null;
                 await Context.SaveChangesAsync();
             }
 

@@ -19,11 +19,18 @@ namespace Gestaoaju.Filters
             this.env = env;
             this.logger = logger;
         }
-        
+
         public override async Task OnExceptionAsync(ExceptionContext context)
         {
-            await logger.LogAsync(context.Exception);
-            context.Result = new StatusCodeResult(500);
+            if (env.IsProduction() || env.IsStaging())
+            {
+                await logger.LogAsync(context.Exception);
+                context.Result = new StatusCodeResult(500);
+            }
+            else
+            {
+                throw context.Exception;
+            }
         }
     }
 }

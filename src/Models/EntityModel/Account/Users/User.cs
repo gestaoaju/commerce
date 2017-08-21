@@ -14,7 +14,7 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
         public string Email { get; set; }
         public string Salt { get; set; }
         public string Password { get; set; }
-        public string Token { get; set; }
+        public string AccessCode { get; set; }
         public DateTime LastLogin { get; set; }
         public DateTime LastChangePassword { get; set; }
 

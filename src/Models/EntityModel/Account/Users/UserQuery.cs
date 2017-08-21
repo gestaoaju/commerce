@@ -19,7 +19,7 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
 
         public static IQueryable<User> WhereToken(this IQueryable<User> users, string token)
         {
-            return users.Where(user => user.Token == token);
+            return users.Where(user => user.AccessCode == token);
         }
     }
 }

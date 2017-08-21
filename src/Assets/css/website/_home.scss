@@ -1,0 +1,119 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "../components/palette";
+
+.home
+{
+    .header
+    {
+        background: $sun-flower;
+        background-image: url("/img/water-mark.png");
+        background-repeat: no-repeat;
+        padding-top: 20px;
+        text-align: center;
+
+        img
+        {
+            max-width: 100%;
+        }
+    }
+
+    .solutions
+    {
+        background: $clouds;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+
+        img
+        {
+            height: 120px;
+            object-fit: none;
+
+            &.stores-and-teams
+            {
+                width: 130px;
+                object-position: 0 0;
+            }
+
+            &.buying-selling-renting
+            {
+                width: 150px;
+                object-position: -125px 0;
+            }
+
+            &.financial-and-inventory
+            {
+                width: 130px;
+                object-position: -270px 0;
+            }
+        }
+    }
+
+    .contact
+    {
+        background: $white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+
+        a.as-button.bordered
+        {
+            border-color: $sun-flower;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            background: $black;
+            text-transform: none;
+            font-size: 12pt;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &:active:hover,
+            &:active:focus
+            {
+                background-color: darken($black, 10%);
+                border-bottom: 5px solid darken($sun-flower, 15%);
+            }
+
+            &:hover,
+            &:focus,
+            &:active,
+            &:active:hover,
+            &:active:focus
+            {
+                border-bottom: 5px solid darken($sun-flower, 15%);
+            }
+        }
+    }
+
+    .pricing
+    {
+        background: $clouds;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .footer
+    {
+        background: $silver;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        text-align: center;
+
+        a
+        {
+            color: $midnight-blue;
+            font-size: 11pt;
+        }
+
+        p
+        {
+            font-size: 10pt;
+            padding-top: 20px;
+        }
+    }
+}

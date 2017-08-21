@@ -1,0 +1,43 @@
+﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "../components/palette";
+
+input,
+select,
+textarea
+{
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $midnight-blue;
+    background-color: $white;
+    background-image: none;
+    border: 1px solid $silver;
+
+    &:focus
+    {
+        border-color: $peter-river;
+        outline: 0;
+    }
+
+    &[disabled]
+    {
+        background-color: $clouds;
+        cursor: not-allowed;
+    }
+}
+
+input,
+select
+{
+    height: 46px;
+}
+
+textarea
+{
+    height: auto;
+    resize: none;
+}
