@@ -12,7 +12,7 @@
 @mixin backface-visibility($visibility)
 {
     -webkit-backface-visibility: $visibility;
-	-moz-backface-visibility: $visibility;
+    -moz-backface-visibility: $visibility;
     backface-visibility: $visibility;
 }
 
@@ -96,9 +96,9 @@
 @mixin transform($transform)
 {
     -webkit-transform: $transform;
-	-moz-transform: $transform;
-	-ms-transform: $transform;
-	transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    transform: $transform;
 }
 
 @mixin transition($transition...)
@@ -115,4 +115,11 @@
     -moz-user-select: $user-select;
     -ms-user-select: $user-select;
     user-select: $user-select;
+}
+
+@mixin visibility($visibility)
+{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    visibility: hidden;
 }
