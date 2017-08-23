@@ -1,6 +1,7 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
+@import "cross-browser";
 @import "palette";
 
 @mixin new-modal-color($name, $text-color, $bg-color) {
@@ -33,29 +34,21 @@ body.modal-open {
     width: 100%;
     height: 100%;
     z-index: 1050;
-    visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
+    @include visibility(hidden);
+    @include backface-visibility(hidden);
 
     .modal-content {
         position: relative;
         color: darken($white, 50%);
         background: darken($white, 5%);
-        -webkit-overflow-scrolling: touch;
         margin: 0;
         padding: 15px;
-        -webkit-box-shadow: 0 1px 3px darken($white, 30%);
-        box-shadow: 0 1px 3px darken($white, 30%);
+        -webkit-overflow-scrolling: touch;
         text-align: center;
-        -webkit-transform: translateY(-200%);
-        -moz-transform: translateY(-200%);
-        -ms-transform: translateY(-200%);
-        transform: translateY(-200%);
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
         opacity: 0;
+        @include box-shadow(0 1px 3px darken($white, 30%));
+        @include transform(translateY(-200%));
+        @include transition(all .3s);
 
         button.outline,
         .as-button.outline {
@@ -69,14 +62,11 @@ body.modal-open {
     &.show {
         background-color: rgba(255, 255, 255, 0.3);
         overflow: auto;
-        visibility: visible;
+        @include visibility(visible);
 
         .modal-content {
-            -webkit-transform: translateY(0%);
-            -moz-transform: translateY(0%);
-            -ms-transform: translateY(0%);
-            transform: translateY(0%);
             opacity: 1;
+            @include transform(translateY(0%));
         }
     }
 }
