@@ -4,9 +4,9 @@
 @import "cross-browser";
 @import "palette";
 
-@mixin new-modal-color($name, $text-color, $bg-color) {
-    .modal.#{$name} {
-        .modal-content {
+@mixin new-message-color($name, $text-color, $bg-color) {
+    .message.#{$name} {
+        .message-content {
             color: $text-color;
             background: $bg-color;
 
@@ -23,11 +23,11 @@
     }
 }
 
-body.modal-open {
+body.message-show {
     overflow: hidden;
 }
 
-.modal {
+.message {
     position: fixed;
     top: 0;
     left: 0;
@@ -37,7 +37,7 @@ body.modal-open {
     @include visibility(hidden);
     @include backface-visibility(hidden);
 
-    .modal-content {
+    .message-content {
         position: relative;
         color: darken($white, 50%);
         background: darken($white, 5%);
@@ -64,13 +64,13 @@ body.modal-open {
         overflow: auto;
         @include visibility(visible);
 
-        .modal-content {
+        .message-content {
             opacity: 1;
             @include transform(translateY(0%));
         }
     }
 }
 
-@include new-modal-color(danger, $white, $alizarin);
-@include new-modal-color(info, $white, $peter-river);
-@include new-modal-color(success, $white, $turquoise);
+@include new-message-color(danger, $white, $alizarin);
+@include new-message-color(info, $white, $peter-river);
+@include new-message-color(success, $white, $turquoise);

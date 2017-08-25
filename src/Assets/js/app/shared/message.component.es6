@@ -15,8 +15,8 @@ export default Vue.component('app-message', {
         }
     },
     template: `
-        <div class="modal" :class="[mode, { 'show': visible }]">
-            <div class="modal-content">
+        <div class="message" :class="[mode, { 'show': visible }]">
+            <div class="message-content">
                 <slot></slot>
             </div>
         </div>
@@ -24,9 +24,9 @@ export default Vue.component('app-message', {
     watch: {
         visible() {
             if (this.visible) {
-                document.body.classList.add('modal-open')
+                document.body.classList.add('message-show')
             } else {
-                document.body.classList.remove('modal-open')
+                document.body.classList.remove('message-show')
             }
         }
     }
