@@ -60,7 +60,7 @@ body.modal-open {
     }
 
     &.show {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba($white, 0.3);
         overflow: auto;
         @include visibility(visible);
 

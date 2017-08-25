@@ -5,7 +5,7 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div id="signin">
+<div id="signin" class="sign-form">
     <app-message :visible="error" :mode="'danger'">
         <div class="group">
             Ocorreu algum problema. Por favor tente novamente.
@@ -36,49 +36,47 @@
         </button>
     </app-message>
 
-    <div class="sign-form">
-        <div class="container">
-            <div class="card">
-                <div class="group text-center">
-                    <a href="/">
-                        <img src="/img/logo.png" alt="gestaoaju" />
+    <div class="container">
+        <div class="card">
+            <div class="group text-center">
+                <a href="/">
+                    <img src="/img/logo.png" alt="gestaoaju" />
+                </a>
+            </div>
+            <a href="/" class="as-button block bordered facebook">
+                Entrar com o facebook
+            </a>
+            <div class="or-line">
+                <span>ou</span>
+            </div>
+            <p>
+                Entrar com sua conta no gestaoaju:
+            </p>
+            <form v-on:submit.prevent="signin()">
+                <div class="group">
+                    <input type="text" v-model="username" maxlength="80" placeholder="E-mail"
+                        :disabled="loading" autofocus />
+                </div>
+                <div class="group">
+                    <input type="password" v-model="password" maxlength="20" placeholder="Senha"
+                        :disabled="loading">
+                    <a href="/forgot-password" class="font-11">
+                        Esqueci minha senha
                     </a>
                 </div>
-                <a href="/" class="as-button block bordered facebook">
-                    Entrar com o facebook
-                </a>
-                <div class="or-line">
-                    <span>ou</span>
+                <div class="group">
+                    <button type="submit" class="block shadow large sun-flower" :disabled="loading">
+                        <span v-show="!loading">Entrar</span>
+                        <span class="loading small" v-show="loading"></span>
+                    </button>
                 </div>
                 <p>
-                    Entrar com sua conta no gestaoaju:
+                    Não possui uma conta?
+                    <a href="/signup">
+                        Criar conta
+                    </a>
                 </p>
-                <form v-on:submit.prevent="signin()">
-                    <div class="group">
-                        <input type="text" v-model="username" maxlength="80" placeholder="E-mail"
-                            :disabled="loading" autofocus />
-                    </div>
-                    <div class="group">
-                        <input type="password" v-model="password" maxlength="20" placeholder="Senha"
-                            :disabled="loading">
-                        <a href="/forgot-password" class="font-11">
-                            Esqueci minha senha
-                        </a>
-                    </div>
-                    <div class="group">
-                        <button type="submit" class="block shadow large sun-flower" :disabled="loading">
-                            <span v-show="!loading">Entrar</span>
-                            <span class="loading small" v-show="loading"></span>
-                        </button>
-                    </div>
-                    <p>
-                        Não possui uma conta?
-                        <a href="/signup">
-                            Criar conta
-                        </a>
-                    </p>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
 </div>
