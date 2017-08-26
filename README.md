@@ -8,6 +8,15 @@ Management platform for buying, selling and renting products.
 - Install [Visual Studio Code](https://code.visualstudio.com/)
 - Install [SQL Server Developer](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
+Some basic extensions for VS Code:
+
+- ASP.NET Helper
+- C#
+- C# Extensions
+- HTML Snippets
+- JavScript ES6
+- Sass
+
 ## How to run
 
 1. Install .NET Core packages:  
