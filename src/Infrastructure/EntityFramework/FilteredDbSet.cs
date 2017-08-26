@@ -22,10 +22,10 @@ namespace Gestaoaju.Infrastructure.EntityFramework
         private DbSet<TEntity> dbSet;
         private IQueryable<TEntity> query;
 
-        public FilteredDbSet(DbSet<TEntity> baseSet, Expression<Func<TEntity, bool>> filter)
+        public FilteredDbSet(DbSet<TEntity> baseDbSet, Expression<Func<TEntity, bool>> filter)
         {
-            dbSet = baseSet;
-            query = baseSet.Where(filter);
+            dbSet = baseDbSet;
+            query = baseDbSet.Where(filter);
         }
 
         Type IQueryable.ElementType => typeof(TEntity);
