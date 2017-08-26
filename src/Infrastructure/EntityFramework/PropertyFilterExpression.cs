@@ -12,12 +12,12 @@ namespace Gestaoaju.Infrastructure.EntityFramework
 
         public PropertyFilterExpression(string propertyName, object propertyValue)
         {
-            ParameterExpression parameter = Expression.Parameter(typeof(TEntity));
-            MemberExpression property = Expression.Property(parameter, propertyName);
-            ConstantExpression constant = Expression.Constant(propertyValue);
-            BinaryExpression equals = Expression.Equal(property, constant);
+            var parameter = Expression.Parameter(typeof(TEntity));
+            var property = Expression.Property(parameter, propertyName);
+            var constant = Expression.Constant(propertyValue);
+            var equality = Expression.Equal(property, constant);
 
-            expression = Expression.Lambda<Func<TEntity, bool>>(equals, parameter);
+            expression = Expression.Lambda<Func<TEntity, bool>>(equality, parameter);
         }
 
         public static implicit operator Expression<Func<TEntity, bool>>(

@@ -19,12 +19,12 @@ namespace Gestaoaju.Infrastructure.EntityFramework
         IAsyncEnumerableAccessor<TEntity>, IInfrastructure<IServiceProvider>
         where TEntity : class
     {
-        private DbSet<TEntity> set;
+        private DbSet<TEntity> dbSet;
         private IQueryable<TEntity> query;
 
         public FilteredDbSet(DbSet<TEntity> baseSet, Expression<Func<TEntity, bool>> filter)
         {
-            set = baseSet;
+            dbSet = baseSet;
             query = baseSet.Where(filter);
         }
 
@@ -38,53 +38,53 @@ namespace Gestaoaju.Infrastructure.EntityFramework
             ((IAsyncEnumerableAccessor<TEntity>)query).AsyncEnumerable;
 
         IServiceProvider IInfrastructure<IServiceProvider>.Instance =>
-            ((IInfrastructure<IServiceProvider>)set).Instance;
+            ((IInfrastructure<IServiceProvider>)dbSet).Instance;
 
-        public override LocalView<TEntity> Local => set.Local;
+        public override LocalView<TEntity> Local => dbSet.Local;
 
         public IEnumerator<TEntity> GetEnumerator() => query.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => query.GetEnumerator();
 
-        public override TEntity Find(params object[] keyValues) => set.Find(keyValues);
+        public override TEntity Find(params object[] keyValues) => dbSet.Find(keyValues);
 
-        public override Task<TEntity> FindAsync(params object[] keyValues) => set.FindAsync(keyValues);
+        public override Task<TEntity> FindAsync(params object[] keyValues) => dbSet.FindAsync(keyValues);
 
         public override Task<TEntity> FindAsync(object[] keyValues,
-            CancellationToken cancellationToken) => set.FindAsync(keyValues, cancellationToken);
+            CancellationToken cancellationToken) => dbSet.FindAsync(keyValues, cancellationToken);
 
-        public override EntityEntry<TEntity> Add(TEntity entity) => set.Add(entity);
+        public override EntityEntry<TEntity> Add(TEntity entity) => dbSet.Add(entity);
 
         public override Task<EntityEntry<TEntity>> AddAsync(TEntity entity,
             CancellationToken cancellationToken = default(CancellationToken)) =>
-                set.AddAsync(entity, cancellationToken);
+                dbSet.AddAsync(entity, cancellationToken);
         
-        public override EntityEntry<TEntity> Attach(TEntity entity) => set.Attach(entity);
+        public override EntityEntry<TEntity> Attach(TEntity entity) => dbSet.Attach(entity);
 
-        public override EntityEntry<TEntity> Remove(TEntity entity) => set.Remove(entity);
+        public override EntityEntry<TEntity> Remove(TEntity entity) => dbSet.Remove(entity);
 
-        public override EntityEntry<TEntity> Update(TEntity entity) => set.Update(entity);
+        public override EntityEntry<TEntity> Update(TEntity entity) => dbSet.Update(entity);
 
-        public override void AddRange(params TEntity[] entities) => set.AddRange(entities);
+        public override void AddRange(params TEntity[] entities) => dbSet.AddRange(entities);
 
-        public override Task AddRangeAsync(params TEntity[] entities) => set.AddRangeAsync(entities);
+        public override Task AddRangeAsync(params TEntity[] entities) => dbSet.AddRangeAsync(entities);
 
-        public override void AttachRange(params TEntity[] entities) => set.AttachRange(entities);
+        public override void AttachRange(params TEntity[] entities) => dbSet.AttachRange(entities);
 
-        public override void RemoveRange(params TEntity[] entities) => set.RemoveRange(entities);
+        public override void RemoveRange(params TEntity[] entities) => dbSet.RemoveRange(entities);
 
-        public override void UpdateRange(params TEntity[] entities) => set.UpdateRange(entities);
+        public override void UpdateRange(params TEntity[] entities) => dbSet.UpdateRange(entities);
 
-        public override void AddRange(IEnumerable<TEntity> entities) => set.AddRange(entities);
+        public override void AddRange(IEnumerable<TEntity> entities) => dbSet.AddRange(entities);
 
         public override Task AddRangeAsync(IEnumerable<TEntity> entities,
             CancellationToken cancellationToken = default(CancellationToken)) =>
-                set.AddRangeAsync(entities, cancellationToken);
+                dbSet.AddRangeAsync(entities, cancellationToken);
         
-        public override void AttachRange(IEnumerable<TEntity> entities) => set.AttachRange(entities);
+        public override void AttachRange(IEnumerable<TEntity> entities) => dbSet.AttachRange(entities);
 
-        public override void RemoveRange(IEnumerable<TEntity> entities) => set.RemoveRange(entities);
+        public override void RemoveRange(IEnumerable<TEntity> entities) => dbSet.RemoveRange(entities);
 
-        public override void UpdateRange(IEnumerable<TEntity> entities) => set.UpdateRange(entities);
+        public override void UpdateRange(IEnumerable<TEntity> entities) => dbSet.UpdateRange(entities);
     }
 }
