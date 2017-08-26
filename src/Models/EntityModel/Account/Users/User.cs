@@ -2,11 +2,12 @@
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
 using System;
+using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 
 namespace Gestaoaju.Models.EntityModel.Account.Users
 {
-    public class User
+    public class User : ITenantScope
     {
         public int Id { get; set; }
         public int TenantId { get; set; }

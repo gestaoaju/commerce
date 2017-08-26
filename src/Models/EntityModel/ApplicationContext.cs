@@ -10,17 +10,17 @@ namespace Gestaoaju.Models.EntityModel
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<ClosureRequest> ClosureRequests { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<ClosureRequest> ClosureRequests => Set<ClosureRequest>();
+        public DbSet<Tenant> Tenants => Set<Tenant>();
+        public DbSet<User> Users => Set<User>();
 
         public ApplicationContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.MapClosureRequest();
-            modelBuilder.MapUser();
             modelBuilder.MapTenant();
+            modelBuilder.MapUser();
         }
     }
 }
