@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gestaoaju.Models.EntityModel
 {
-    public class ApplicationContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<ClosureRequest> ClosureRequests => Set<ClosureRequest>();
         public DbSet<Tenant> Tenants => Set<Tenant>();
         public DbSet<User> Users => Set<User>();
 
-        public ApplicationContext(DbContextOptions options) : base(options) { }
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

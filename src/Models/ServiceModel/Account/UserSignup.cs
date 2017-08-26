@@ -14,12 +14,12 @@ namespace Gestaoaju.Models.ServiceModel.Account
 {
     public class UserSignup
     {
-        public ApplicationContext Context { get; private set; }
+        public AppDbContext Context { get; private set; }
         public User User { get; private set; }
         public ClosureRequest ClosureRequest { get; private set; }
         public bool EmailAlreadyTaken { get; private set; }
 
-        public UserSignup(ApplicationContext context, User user)
+        public UserSignup(AppDbContext context, User user)
         {
             Context = context;
             User = user;

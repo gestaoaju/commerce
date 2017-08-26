@@ -19,8 +19,8 @@ namespace Gestaoaju.Fakes
         {
         }
 
-        public ApplicationContext ApplicationContext => Host.Services
-            .GetRequiredService<ApplicationContext>();
+        public AppDbContext ApplicationContext => Host.Services
+            .GetRequiredService<AppDbContext>();
 
         public ErrorLoggerFake ErrorLogger => Host.Services
             .GetRequiredService<IErrorLogger>() as ErrorLoggerFake;

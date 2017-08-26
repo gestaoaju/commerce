@@ -38,14 +38,14 @@ namespace Gestaoaju
                 options.UseCustomFilters();
             });
 
-            services.AddDbContext<ApplicationContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["Database:ConnectionString"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
 
             services.Configure<RavenOptions>(Configuration.GetSection("Sentry"));
 
-            services.AddTransient<ApplicationContext>();
+            services.AddTransient<AppDbContext>();
             services.AddTransient<IErrorLogger, SentryLogger>();
             services.AddTransient<IMailer, SmtpMailer>();
             services.AddSingleton<ITaskHandler, TaskHandler>();

@@ -11,6 +11,8 @@ namespace Gestaoaju.Models.EntityModel.Account.Tenants
         {
             modelBuilder.Entity<Tenant>(entity =>
             {
+                entity.ToTable(nameof(Tenant));
+
                 entity.HasKey(p => p.Id);
 
                 entity.Property(p => p.Id).UseSqlServerIdentityColumn();
@@ -18,7 +20,8 @@ namespace Gestaoaju.Models.EntityModel.Account.Tenants
                 entity.Property(p => p.CreatedAt).IsRequired();
                 entity.Property(p => p.DeactivatedAt);
 
-                entity.HasMany(p => p.Users).WithOne(p => p.Tenant).HasForeignKey(p => p.TenantId);
+                entity.HasMany(p => p.Users).WithOne(p => p.Tenant)
+                    .HasForeignKey(p => p.TenantId).OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

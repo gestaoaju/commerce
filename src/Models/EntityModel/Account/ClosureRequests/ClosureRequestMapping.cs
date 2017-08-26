@@ -11,6 +11,8 @@ namespace Gestaoaju.Models.EntityModel.Account.ClosureRequests
         {
             modelBuilder.Entity<ClosureRequest>(entity =>
             {
+                entity.ToTable(nameof(ClosureRequest));
+
                 entity.HasKey(p => p.Token);
 
                 entity.Property(p => p.Token).HasMaxLength(50);

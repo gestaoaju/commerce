@@ -19,12 +19,12 @@ namespace Gestaoaju.Controllers.Account
 {
     public class UsersController : Controller
     {
-        private ApplicationContext context;
+        private AppDbContext context;
         private TemplateViewEngine templateView;
         private IMailer mailer;
         private ITaskHandler taskHandler;
 
-        public UsersController(ApplicationContext context, TemplateViewEngine templateView,
+        public UsersController(AppDbContext context, TemplateViewEngine templateView,
             IMailer mailer, ITaskHandler taskHandler)
         {
             this.context = context;

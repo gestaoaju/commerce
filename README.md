@@ -19,20 +19,30 @@ Some basic extensions for VS Code:
 
 ## How to run
 
-1. Install .NET Core packages:  
-`dotnet restore src/Gestaoaju.csproj`
+1. Go to source folder (from root):  
+`cd src`
 
-2. Install Node JS packages:  
-`cd src`  
-`npm install`  
-`npm start` (this will build assets to wwwroot folder and watch file changes)  
+2. Install .NET Core packages:  
+`dotnet restore`
 
-3. Press F5 to run the application
+3. Run migrations:  
+`dotnet ef database update --context AppDbContext`
+
+4. Install Node JS packages:  
+`npm install`
+
+5. Run webpack (build assets to wwwroot):  
+`npm start`
+
+6. Run the application by pressing F5
 
 ## How to test
 
-1. Install .NET Core packages:  
-`dotnet restore test/Gestaoaju.Test.csproj`
+1. Go to test folder (from root):  
+`cd test`
 
-2. Run the tests:  
-`dotnet test test/Gestaoaju.Test.csproj`
+2. Install .NET Core packages:  
+`dotnet restore`
+
+3. Run all tests:  
+`dotnet test`

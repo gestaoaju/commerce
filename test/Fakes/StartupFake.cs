@@ -37,13 +37,13 @@ namespace Gestaoaju.Fakes
                 options.UseCustomFilters();
             });
             
-            services.AddDbContext<ApplicationContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseInMemoryDatabase("db_test");
             });
 
             services.AddSingleton(Environment);
-            services.AddSingleton<ApplicationContext>();
+            services.AddSingleton<AppDbContext>();
             services.AddSingleton<IErrorLogger, ErrorLoggerFake>();
             services.AddSingleton<IMailer, MailerFake>();
             services.AddSingleton<ITaskHandler, TaskHandlerFake>();

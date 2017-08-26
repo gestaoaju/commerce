@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Gestaoaju.Models.EntityModel
 {
-    public class TenantContext : ApplicationContext
+    public class TenantDbContext : AppDbContext
     {
         private ITenantIdProvider tenantIdProvider;
 
-        public TenantContext(DbContextOptions options, ITenantIdProvider tenantIdProvider)
+        public TenantDbContext(DbContextOptions options, ITenantIdProvider tenantIdProvider)
             : base(options)
         {
             this.tenantIdProvider = tenantIdProvider;

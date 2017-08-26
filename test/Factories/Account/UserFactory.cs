@@ -13,7 +13,7 @@ namespace Gestaoaju.Factories.Account
     {
         private static int emailId;
 
-        public static User BuildUser(this ApplicationContext context)
+        public static User BuildUser(this AppDbContext context)
         {
             return new User
             {
@@ -23,7 +23,7 @@ namespace Gestaoaju.Factories.Account
             };
         }
 
-        public static User CreateUser(this ApplicationContext context,
+        public static User CreateUser(this AppDbContext context,
             Tenant tenant = null, bool authenticated = false)
         {
             User user = context.BuildUser();

@@ -11,10 +11,13 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
         {
             modelBuilder.Entity<User>(entity =>
             {
+                entity.ToTable(nameof(User));
+
                 entity.HasKey(p => new { p.Id, p.TenantId });
                 entity.HasAlternateKey(p => p.Email);
 
                 entity.Property(p => p.Id).UseSqlServerIdentityColumn();
+                entity.Property(p => p.TenantId).IsRequired();
                 entity.Property(p => p.Name).HasMaxLength(80).IsRequired();
                 entity.Property(p => p.Email).HasMaxLength(80).IsRequired();
                 entity.Property(p => p.Salt).HasMaxLength(50).IsRequired();

@@ -12,10 +12,10 @@ namespace Gestaoaju.Models.ServiceModel.Account
 {
     public class UserAuthentication
     {
-        public ApplicationContext Context { get; private set; }
+        public AppDbContext Context { get; private set; }
         public User User { get; private set; }
 
-        public UserAuthentication(ApplicationContext context)
+        public UserAuthentication(AppDbContext context)
         {
             Context = context;
         }
