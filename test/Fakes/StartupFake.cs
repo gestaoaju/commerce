@@ -39,7 +39,7 @@ namespace Gestaoaju.Fakes
             
             services.AddDbContext<ApplicationContext>(options =>
             {
-                options.UseInMemoryDatabase();
+                options.UseInMemoryDatabase("db_test");
             });
 
             services.AddSingleton(Environment);

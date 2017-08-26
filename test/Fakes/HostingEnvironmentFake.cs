@@ -1,9 +1,9 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Gestaoaju.Fakes
 {
@@ -20,8 +20,7 @@ namespace Gestaoaju.Fakes
         {
             EnvironmentName = "Test";
             ApplicationName = "Gestaoaju.Test";
-            ContentRootPath = PlatformServices.Default.Application
-                .ApplicationBasePath.Replace(@"test\bin\Debug\netcoreapp1.1", "src");
+            ContentRootPath = AppContext.BaseDirectory.Replace(@"test\bin\Debug\netcoreapp2", "src");
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
