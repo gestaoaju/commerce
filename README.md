@@ -4,9 +4,10 @@ Management platform for buying, selling and renting products.
 
 ## Before you start
 
+- Install [.NET Core 2.0](https://github.com/dotnet/core/)
 - Install [Node JS](https://nodejs.org/)
 - Install [Visual Studio Code](https://code.visualstudio.com/)
-- Install [SQL Server Developer](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- Install [SQL Server Developer](https://www.microsoft.com/en-us/sql-server/sql-server-downloads/)
 
 Some basic extensions for VS Code:
 
