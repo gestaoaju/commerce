@@ -7,16 +7,20 @@ Management platform for buying, selling and renting products.
 - Install [.NET Core 2.0](https://github.com/dotnet/core/)
 - Install [Node JS](https://nodejs.org/)
 - Install [Visual Studio Code](https://code.visualstudio.com/)
-- Install [SQL Server Developer](https://www.microsoft.com/en-us/sql-server/sql-server-downloads/)
+- Install [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads/)
 
-Some basic extensions for VS Code:
+Install some basic VS Code extensions:
 
 - ASP.NET Helper
 - C#
 - C# Extensions
 - HTML Snippets
-- JavScript ES6
+- JavaScript ES6
 - Sass
+
+Create a LocalDB instance:  
+`sqllocaldb create Gestaoaju`  
+`sqllocaldb start Gestaoaju`
 
 ## How to run
 
