@@ -39,7 +39,8 @@ Create a LocalDB instance:
 5. Run webpack (build assets to wwwroot):  
 `npm start`
 
-6. Run the application by pressing F5
+6. Run the application:  
+`dotnet run`
 
 ## How to test
 
