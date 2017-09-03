@@ -1,20 +1,28 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.Text;
+using Gestaoaju.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Text;
 
 namespace Gestaoaju.Helpers.EmailTagHelpers
 {
     public class MailMessageTagHelper : TagHelper
     {
+        [HtmlAttributeNotBound, ViewContext]
+        public ViewContext ViewContext { get; set; }
+
+        private string BackgroundImage =>
+            $"{ViewContext.HttpContext.Request.DomainUrl()}/img/background.png";
+
         private TagBuilder CreateDivTag()
         {
             var div = new TagBuilder("div");
 
             div.Attributes.Add("style", new StringBuilder()
-                .Append("background-color:#ecf0f1;")
+                .Append($"background:#ecf0f1 url({BackgroundImage}) repeat;")
                 .Append("color:#2f2936;")
                 .Append("font-family:Arial,Helvetica,sans-serif;")
                 .Append("font-size:16px;")
@@ -53,9 +61,9 @@ namespace Gestaoaju.Helpers.EmailTagHelpers
         private TagBuilder CreateBodyTag() => new TagBuilder("body");
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
-		{
+        {
             output.TagName = "html";
-            
+
             var body = CreateBodyTag();
             var div = CreateDivTag();
             var table = CreateTableTag();
@@ -70,6 +78,6 @@ namespace Gestaoaju.Helpers.EmailTagHelpers
             output.PostContent.AppendHtml(table.RenderEndTag());
             output.PostContent.AppendHtml(div.RenderEndTag());
             output.PostContent.AppendHtml(body.RenderEndTag());
-		}
+        }
     }
 }
