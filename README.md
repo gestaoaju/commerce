@@ -18,28 +18,27 @@ Install some basic VS Code extensions:
 - JavaScript ES6
 - Sass
 
-Create a LocalDB instance:  
-`sqllocaldb create Gestaoaju`  
-`sqllocaldb start Gestaoaju`
-
 ## How to run
 
-1. Go to source folder (from root):  
+1. Configure your `appsettings.json`  
+(there is an `appsettings.sample.json` file to guide you)
+
+2. Go to source folder (from root):  
 `cd src`
 
-2. Install .NET Core packages:  
+3. Install .NET Core packages:  
 `dotnet restore`
 
-3. Run migrations:  
+4. Run migrations:  
 `dotnet ef database update --context AppDbContext`
 
-4. Install Node JS packages:  
+5. Install Node JS packages:  
 `npm install`
 
-5. Run webpack (build assets to wwwroot):  
+6. Run webpack (build assets to wwwroot):  
 `npm start`
 
-6. Run the application:  
+7. Run the application:  
 `dotnet run`
 
 ## How to test

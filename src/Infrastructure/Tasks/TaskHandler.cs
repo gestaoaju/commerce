@@ -16,7 +16,7 @@ namespace Gestaoaju.Infrastructure.Tasks
             this.logger = logger;
         }
 
-        public void Execute(Func<Task> action)
+        public void ExecuteInBackground(Func<Task> action)
         {
             action.Invoke().ContinueWith(async task =>
             {

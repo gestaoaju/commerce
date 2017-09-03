@@ -45,7 +45,7 @@ namespace Gestaoaju.Models.ServiceModel.Account
                 ClosureRequest.Email = User.Email;
                 ClosureRequest.RequestDate = User.LastLogin;
                 ClosureRequest.ExpiryDate = ClosureRequest.RequestDate
-                    .AddHours(ClosureRequest.TokenExpiryTime);
+                    .AddHours(ClosureRequest.ExpiryHours);
 
                 Context.Users.Add(User);
                 Context.ClosureRequests.Add(ClosureRequest);

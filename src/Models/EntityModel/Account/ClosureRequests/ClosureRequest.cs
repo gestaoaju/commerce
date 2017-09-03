@@ -7,7 +7,7 @@ namespace Gestaoaju.Models.EntityModel.Account.ClosureRequests
 {
     public class ClosureRequest
     {
-        public const int TokenExpiryTime = 48;
+        public const int ExpiryHours = 48;
         
         public string Token { get; set; }
         public string Email { get; set; }

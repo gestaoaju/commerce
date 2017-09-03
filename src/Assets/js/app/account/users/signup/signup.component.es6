@@ -4,26 +4,27 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import HttpHandler from 'lib/http-handler.es6';
-import SigninModel from './signin.model.es6';
-import { email, required, minLength } from 'vuelidate/lib/validators';
+import SignupViewModel from './signup.viewmodel.es6';
+import { email, required, minLength, maxLength } from 'vuelidate/lib/validators';
 import 'app/shared/message.component.es6';
 
 export default new Vue({
-    el: '#signin',
+    el: '#signup',
     data: {
         loading: false,
-        failed: false,
         invalid: false,
-        error: false,
+        errors: null,
+        name: '',
         username: '',
         password: ''
     },
     validations: {
+        name: { required },
         username: { required, email },
-        password: { required, minLength: minLength(8) }
+        password: { required, minLength: minLength(8), maxLength: maxLength(20) }
     },
     methods: {
-        signin() {
+        signup() {
             if (this.$v.$invalid) {
                 this.invalid = true;
                 return;
@@ -33,21 +34,17 @@ export default new Vue({
 
             this.loading = true;
 
-            this.$http.post('signin', new SigninModel(this.$data))
+            this.$http.post('signup', new SignupViewModel(this.$data))
                 .then((response) => {
                     window.location.href = '/dashboard';
                 }).catch((response) => {
-                    this.failed = response.status === 401;
-                    this.error = response.status !== 401;
+                    this.errors = new HttpHandler(response).messages();
                     this.loading = false;
                 });
         },
-        gotIt() {
-            this.invalid = false;
-        },
         tryAgain() {
-            this.failed = false;
-            this.error = false;
+            this.invalid = false;
+            this.errors = null;
         }
     }
 });

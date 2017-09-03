@@ -8,6 +8,6 @@ namespace Gestaoaju.Infrastructure.Tasks
 {
     public interface ITaskHandler
     {
-        void Execute(Func<Task> action);
+        void ExecuteInBackground(Func<Task> action);
     }
 }

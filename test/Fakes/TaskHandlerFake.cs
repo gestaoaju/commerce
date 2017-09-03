@@ -10,7 +10,7 @@ namespace Gestaoaju.Fakes
 {
     public class TaskHandlerFake : ITaskHandler
     {
-        public void Execute(Func<Task> action)
+        public void ExecuteInBackground(Func<Task> action)
         {
             action.Invoke().GetAwaiter().GetResult();
         }

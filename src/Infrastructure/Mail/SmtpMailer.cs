@@ -13,14 +13,14 @@ namespace Gestaoaju.Infrastructure.Mail
 {
     public class SmtpMailer : IMailer
     {
-        private SmtpMailerOptions options;
+        private SmtpOptions options;
 
-        public SmtpMailer(IOptions<SmtpMailerOptions> options)
+        public SmtpMailer(IOptions<SmtpOptions> options)
         {
             this.options = options.Value;
         }
 
-        public ICollection<MailRecipient> Recipients { get; private set; }
+        public ICollection<MailRecipient> Recipients { get; } = new List<MailRecipient>();
 
         public async Task SendAsync(string subject, string htmlMessage)
         {

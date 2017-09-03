@@ -5,10 +5,10 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div id="signin" class="sign-form">
-    <app-message :visible="error" :mode="'danger'">
+<div id="signup" class="sign-form">
+    <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
-            Ocorreu algum problema. Por favor tente novamente.
+            <div v-for="error in errors">{{error}}</div>
         </div>
         <button type="button" class="small outline" v-on:click="tryAgain()">
             Tentar novamente
@@ -17,22 +17,10 @@
 
     <app-message :visible="invalid" :mode="'danger'">
         <div class="group">
-            Para prosseguir você deve informar seu e-mail e senha corretamente.
-        </div>
-        <button type="button" class="small outline" v-on:click="gotIt()">
-            Entendi
-        </button>
-    </app-message>
-
-    <app-message :visible="failed" :mode="'danger'">
-        <div class="group">
-            E-mail e/ou senha estão incorretos.
+            Por favor informe todos os campos corretamente.
         </div>
         <button type="button" class="small outline" v-on:click="tryAgain()">
-            Tentar novamente
-        </button>
-        <button type="button" class="small outline">
-            Redefinir minha senha
+            Entendi
         </button>
     </app-message>
 
@@ -40,48 +28,54 @@
         <div class="card">
             <div class="group text-center">
                 <a href="/">
-                    <img src="/img/logo.png" alt="gestaoaju" />
+                    <img src="/img/logo.png" alt="gestaoaju" asp-append-version="true" />
                 </a>
             </div>
             <a href="/" class="as-button block bordered facebook">
-                Entrar com o facebook
+                Cadastrar com meu facebook
             </a>
             <div class="or-line">
                 <span>ou</span>
             </div>
             <p>
-                Entrar com sua conta no gestaoaju:
+                Cadastrar com meu e-mail:
             </p>
-            <form v-on:submit.prevent="signin()">
+            <form v-on:submit.prevent="signup()">
+                <div class="group">
+                    <input type="text" v-model="name" maxlength="80" placeholder="Nome"
+                        :disabled="loading" autofocus />
+                </div>
                 <div class="group">
                     <input type="text" v-model="username" maxlength="80" placeholder="E-mail"
                         :disabled="loading" autofocus />
                 </div>
                 <div class="group">
-                    <input type="password" v-model="password" maxlength="20" placeholder="Senha"
-                        :disabled="loading">
-                    <a href="/forgot-password" class="font-11">
-                        Esqueci minha senha
-                    </a>
+                    <input type="password" v-model="password" maxlength="20"
+                        placeholder="Senha (mínimo 8)" :disabled="loading">
                 </div>
+                <p>
+                    Ao se cadastrar você concorda com os
+                    <a href="/terms">Termos de uso</a> e
+                    <a href="/privacy">Políticas de privacidade</a>.
+                </p>
                 <div class="group">
                     <button type="submit" class="block shadow large sun-flower" :disabled="loading">
-                        <span v-show="!loading">Entrar</span>
+                        <span v-show="!loading">Cadastrar</span>
                         <span class="loading small" v-show="loading"></span>
                     </button>
                 </div>
-                <p>
-                    Não possui uma conta?
-                    <a href="/signup">
-                        Criar conta
-                    </a>
-                </p>
             </form>
+            <p>
+                Já possui uma conta?
+                <a href="/signin">
+                    Acessar conta
+                </a>
+            </p>
         </div>
     </div>
 </div>
 
 @section scripts
 {
-    <script type="text/javascript" src="/js/signin.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="/js/signup.min.js" asp-append-version="true"></script>
 }

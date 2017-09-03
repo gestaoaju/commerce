@@ -4,7 +4,6 @@
 using Gestaoaju.Extensions;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
-using Gestaoaju.Infrastructure.Mvc;
 using Gestaoaju.Infrastructure.Tasks;
 using Gestaoaju.Models.EntityModel;
 using Microsoft.AspNetCore.Builder;
@@ -44,12 +43,12 @@ namespace Gestaoaju
             });
 
             services.Configure<RavenOptions>(Configuration.GetSection("Sentry"));
+            services.Configure<SmtpOptions>(Configuration.GetSection("Smtp"));
 
             services.AddTransient<AppDbContext>();
             services.AddTransient<IErrorLogger, SentryLogger>();
             services.AddTransient<IMailer, SmtpMailer>();
             services.AddSingleton<ITaskHandler, TaskHandler>();
-            services.AddTransient<TemplateViewEngine>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,

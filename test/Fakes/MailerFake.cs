@@ -4,19 +4,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Gestaoaju.Infrastructure.Mail;
-using Gestaoaju.Infrastructure.Mvc;
 
 namespace Gestaoaju.Fakes
 {
     public class MailerFake : IMailer
     {
-        private TemplateViewEngine templateViewEngine;
-
-        public MailerFake(TemplateViewEngine templateViewEngine)
-        {
-            this.templateViewEngine = templateViewEngine;
-        }
-
         public bool EmailSent { get; private set; }
 
         public ICollection<MailRecipient> Recipients => new List<MailRecipient>();

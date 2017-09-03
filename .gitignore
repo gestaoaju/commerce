@@ -57,6 +57,11 @@ wwwroot
 ######################
 *.log
 *.sqlite
+#######################
+# Configuration files #
+#######################
+appsettings.json
+######################
 # OS generated files #
 ######################
 .DS_Store?

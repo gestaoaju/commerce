@@ -4,14 +4,15 @@
 using Gestaoaju.Extensions;
 using Gestaoaju.Infrastructure.Mail;
 using Gestaoaju.Infrastructure.Tasks;
-using Gestaoaju.Infrastructure.Mvc;
 using Gestaoaju.Models.EntityModel;
 using Gestaoaju.Models.EntityModel.Account.Users;
 using Gestaoaju.Models.ServiceModel.Account;
 using Gestaoaju.Models.ViewModel.Account.Users;
 using Gestaoaju.Models.ViewModel.Emails;
 using Gestaoaju.Results.Common;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
@@ -20,15 +21,18 @@ namespace Gestaoaju.Controllers.Account
     public class UsersController : Controller
     {
         private AppDbContext context;
-        private TemplateViewEngine templateView;
+        private IHostingEnvironment env;
+        private IRazorViewEngine viewEngine;
         private IMailer mailer;
         private ITaskHandler taskHandler;
 
-        public UsersController(AppDbContext context, TemplateViewEngine templateView,
+        public UsersController(AppDbContext context,
+            IHostingEnvironment env, IRazorViewEngine viewEngine,
             IMailer mailer, ITaskHandler taskHandler)
         {
             this.context = context;
-            this.templateView = templateView;
+            this.env = env;
+            this.viewEngine = viewEngine;
             this.mailer = mailer;
             this.taskHandler = taskHandler;
         }
@@ -44,7 +48,7 @@ namespace Gestaoaju.Controllers.Account
                 }
             }
 
-            return View("~/Views/Account/Users/Signin.cshtml");
+            return View("~/Views/App/Account/Users/Signin.cshtml");
         }
 
         [HttpPost, Route("signin")]
@@ -77,7 +81,7 @@ namespace Gestaoaju.Controllers.Account
         [HttpGet, Route("signup")]
         public ActionResult Signup()
         {
-            return View("~/Views/Account/Users/Signup.cshtml");
+            return View("~/Views/App/Account/Users/Signup.cshtml");
         }
 
         [HttpPost, Route("signup")]
@@ -91,15 +95,16 @@ namespace Gestaoaju.Controllers.Account
                 return new ModelErrorsJson("E-mail já cadastrado.");
             }
 
+            var viewResult = viewEngine.GetView(env.ContentRootPath,
+                "~/Views/Emails/SignupEmail.cshtml", false);
+
+            var htmlMessage = await new MailView(ControllerContext, viewResult)
+                .ToHtmlAsync(new SignupEmail(userSignup.User, userSignup.ClosureRequest));
+
             mailer.Recipients.Add(new MailRecipient(userSignup.User.Name, userSignup.User.Email));
 
-            taskHandler.Execute(async () => await mailer.SendAsync(
-                subject: "Bem vindo ao gestaoaju.com.br :)",
-                htmlMessage: await templateView.RenderToStringAsync(
-                    viewName: "~/Views/Emails/SignupEmail.cshtml",
-                    model: new SignupEmail(userSignup.User, userSignup.ClosureRequest)
-                )
-            ));
+            taskHandler.ExecuteInBackground(async () => await mailer
+                .SendAsync("Bem vindo ao gestaoaju.com.br :)", htmlMessage));
 
             Response.SetAccessToken(userSignup.User.AccessCode);
 

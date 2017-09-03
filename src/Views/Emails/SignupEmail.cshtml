@@ -3,6 +3,51 @@
     Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 *@
 
-@using Gestaoaju.Models.ViewModel.Emails;
+@using Gestaoaju.Extensions
+@using Gestaoaju.Models.EntityModel.Account.ClosureRequests
+@using Gestaoaju.Models.ViewModel.Emails
 
-TODO
+@model SignupEmail
+
+<mail-message>
+    <mail-header>
+        <a href="@Context.Request.DomainUrl()">
+            <img src="@Context.Request.DomainUrl()/img/logo-small.png" alt="Gestaoaju"
+                asp-append-version="true">
+        </a>
+    </mail-header>
+    <mail-body>
+        <h1>
+            Bem vindo ao Gestaoaju :)
+        </h1>
+        <p>
+            Obrigado por criar uma conta no nosso software de gestão.
+        </p>
+        <p>
+            Estamos bastante entusiasmados em contribuir com o crescimento e desenvolvevimento
+            do seu negócio.
+        </p>
+        <p>
+            Amigavelmente,<br>Equipe Gestaoaju
+        </p>
+        <p font-size="small">
+            P.S.: Nós enviamos esta mensagem porque recebemos uma solicitação de cadastro para este e-mail.
+            Caso não tenha feito o cadastro você pode nos informar que cancelamos imediatamente.
+        </p>
+        <a href="@Context.Request.DomainUrl()/disallow/@Model.ClosureRequest.Token" as-button="danger">
+            Não fiz este cadastro
+        </a>
+        <muted>
+            Este link expirará em @ClosureRequest.ExpiryHours horas
+        </muted>
+    </mail-body>
+    <mail-footer>
+        <a href="@Context.Request.DomainUrl()/terms-of-use" muted>
+            Termos de uso
+        </a>
+        &middot;
+        <a href="@Context.Request.DomainUrl()/privacy" muted>
+            Políticas de privacidade
+        </a>
+    </mail-footer>
+</mail-message>

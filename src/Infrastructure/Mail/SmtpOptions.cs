@@ -3,7 +3,7 @@
 
 namespace Gestaoaju.Infrastructure.Mail
 {
-    public class SmtpMailerOptions
+    public class SmtpOptions
     {
         public string Name { get; set; }
         public string Email { get; set; }

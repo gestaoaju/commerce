@@ -4,12 +4,13 @@
 using Gestaoaju.Extensions;
 using Gestaoaju.Factories.Account;
 using Gestaoaju.Fakes;
-using System.Threading.Tasks;
-using System.Net;
-using Xunit;
+using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
+using Gestaoaju.Models.EntityModel.Account.Users;
 using System.Collections.Generic;
 using System.Linq;
-using Gestaoaju.Models.EntityModel.Account.Users;
+using System.Net;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Gestaoaju.Functional.Account
 {
@@ -68,6 +69,7 @@ namespace Gestaoaju.Functional.Account
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.True(server.ApplicationContext.Users.WhereEmail(user.Email).Any());
+            Assert.True(server.ApplicationContext.ClosureRequests.WhereEmail(user.Email).Any());
             Assert.True(server.Mailer.EmailSent);
         }
 

@@ -4,7 +4,6 @@
 using Gestaoaju.Extensions;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
-using Gestaoaju.Infrastructure.Mvc;
 using Gestaoaju.Infrastructure.Tasks;
 using Gestaoaju.Models.EntityModel;
 using Microsoft.AspNetCore.Builder;
@@ -47,7 +46,6 @@ namespace Gestaoaju.Fakes
             services.AddSingleton<IErrorLogger, ErrorLoggerFake>();
             services.AddSingleton<IMailer, MailerFake>();
             services.AddSingleton<ITaskHandler, TaskHandlerFake>();
-            services.AddSingleton<TemplateViewEngine>();
         }
 
         public void Configure(IApplicationBuilder app)
