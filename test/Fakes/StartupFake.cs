@@ -1,7 +1,8 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-using Gestaoaju.Extensions;
+using Gestaoaju.Authorization;
+using Gestaoaju.Extensions.DependencyInjection;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
 using Gestaoaju.Infrastructure.Tasks;
@@ -31,8 +32,16 @@ namespace Gestaoaju.Fakes
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddJwtAuthentication(options =>
+            {
+                options.Issuer = "auth.api.test.com";
+                options.Audience = "ApiTestAudience";
+                options.SecretKey = "ApiTestSecretKey";
+            });
+
             services.AddMvc(options =>
             {
+                options.UseJwtAuthorizeFilter();
                 options.UseCustomFilters();
             });
             
@@ -50,6 +59,7 @@ namespace Gestaoaju.Fakes
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

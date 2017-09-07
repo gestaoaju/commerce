@@ -59,10 +59,10 @@ namespace Gestaoaju.Models.ServiceModel.Account
             return User != null && User.AccessCode != null;
         }
 
-        public async Task<bool> SignoutAsync(string token)
+        public async Task SignoutAsync(string accessCode)
         {
             User = await Context.Users
-                .WhereToken(token)
+                .WhereAccessCode(accessCode)
                 .SingleOrDefaultAsync();
 
             if (User != null)
@@ -70,8 +70,6 @@ namespace Gestaoaju.Models.ServiceModel.Account
                 User.AccessCode = null;
                 await Context.SaveChangesAsync();
             }
-
-            return User != null;
         }
     }
 }

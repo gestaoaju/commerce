@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestaoaju.Extensions
+namespace Gestaoaju.Extensions.Http
 {
     public static class HttpClientExtensions
     {

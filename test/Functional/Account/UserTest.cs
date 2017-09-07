@@ -1,7 +1,7 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-using Gestaoaju.Extensions;
+using Gestaoaju.Extensions.Http;
 using Gestaoaju.Factories.Account;
 using Gestaoaju.Fakes;
 using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
@@ -36,7 +36,7 @@ namespace Gestaoaju.Functional.Account
             var server = new ServerFake();
             var response = await server.CreateClient().PostAsJsonAsync("signin");
             var errors = await response.Content.ReadAsJsonAsync<List<string>>();
-            var expectedErrors = new List<string>
+            var expectedErrors = new []
             {
                 "The Email field is required.",
                 "The Password field is required."
@@ -81,7 +81,7 @@ namespace Gestaoaju.Functional.Account
             var json = new { name = "Another", email = user.Email, password = "12345678" };
             var response = await server.CreateClient().PostAsJsonAsync("signup", json);
             var errors = await response.Content.ReadAsJsonAsync<List<string>>();
-            var expectedErrors = new List<string> { "E-mail já cadastrado." };
+            var expectedErrors = new [] { "E-mail já cadastrado." };
 
             Assert.Equal((HttpStatusCode)422, response.StatusCode);
             Assert.Equal(errors.OrderBy(e => e), expectedErrors.OrderBy(e => e));
@@ -94,7 +94,7 @@ namespace Gestaoaju.Functional.Account
             var server = new ServerFake();
             var response = await server.CreateClient().PostAsJsonAsync("signup");
             var errors = await response.Content.ReadAsJsonAsync<List<string>>();
-            var expectedErrors = new List<string>
+            var expectedErrors = new []
             {
                 "The Name field is required.",
                 "The Email field is required.",
@@ -109,7 +109,8 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.ApplicationContext.CreateUser(authenticated: true);
-            var response = await server.CreateClient(accessToken: user.AccessCode).GetAsync("signout");
+            var response = await server.CreateClient(accessCode: user.AccessCode)
+                .PostAsync("signout", content: null);
 
             server.ApplicationContext.Entry(user).Reload();
 

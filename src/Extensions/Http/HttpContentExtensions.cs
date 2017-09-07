@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Gestaoaju.Extensions
+namespace Gestaoaju.Extensions.Http
 {
     public static class HttpContentExtensions
     {
