@@ -16,11 +16,13 @@ namespace Gestaoaju.Fakes
         public string ContentRootPath { get; set; }
         public IFileProvider ContentRootFileProvider { get; set; }
 
+        private string BuildEnvironment => this.IsEnvironment("CI") ? "Release" : "Debug";
+
         public HostingEnvironmentFake()
         {
             EnvironmentName = "Test";
             ApplicationName = "Gestaoaju.Test";
-            ContentRootPath = AppContext.BaseDirectory.Replace(@"test\bin\Debug\netcoreapp2.0", "src");
+            ContentRootPath = AppContext.BaseDirectory.Replace($@"test\bin\{BuildEnvironment}\netcoreapp2.0", "src");
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
