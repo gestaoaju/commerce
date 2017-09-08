@@ -1,0 +1,13 @@
+version: '1.0.{build}'
+configuration:
+- Debug
+- Release
+platform: Any CPU
+before_build:
+- appveyor-retry dotnet restore
+build_script:
+- dotnet build "src\Gestaoaju.csproj" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+test_script:
+- dotnet test "test\Gestaoaju.Test.csproj" -c %CONFIGURATION%
+cache:
+- '%USERPROFILE%\.nuget\packages'

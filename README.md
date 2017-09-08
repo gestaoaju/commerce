@@ -2,6 +2,8 @@
 
 Management platform for buying, selling and renting products.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/5hjvkkjw2ec3sm1m?svg=true)](https://ci.appveyor.com/project/marxjmoura/commerce)
+
 ## Before you start
 
 - Install [.NET Core 2.0](https://github.com/dotnet/core/)
