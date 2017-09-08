@@ -14,7 +14,7 @@ before_build:
 - appveyor-retry dotnet restore "src\Gestaoaju.csproj"
 
 build_script:
-- dotnet build "src\Gestaoaju.csproj" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+- dotnet build "src\Gestaoaju.csproj" -c %CONFIGURATION% --no-dependencies
 
 before_test:
 - appveyor-retry dotnet restore "test\Gestaoaju.Test.csproj"
