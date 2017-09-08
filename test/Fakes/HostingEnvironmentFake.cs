@@ -20,7 +20,7 @@ namespace Gestaoaju.Fakes
         {
             EnvironmentName = "Test";
             ApplicationName = "Gestaoaju.Test";
-            ContentRootPath = AppContext.BaseDirectory.Replace(@"test\bin\Debug\netcoreapp2", "src");
+            ContentRootPath = AppContext.BaseDirectory.Replace(@"test\bin\Debug\netcoreapp2.0", "src");
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
