@@ -1,13 +1,26 @@
+branches:
+  only:
+    - master
+
 version: '1.0.{build}'
+
+os: Visual Studio 2017
+
 configuration: Release
+
 platform: Any CPU
+
 before_build:
 - appveyor-retry dotnet restore "src\Gestaoaju.csproj"
+
 build_script:
 - dotnet build "src\Gestaoaju.csproj" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+
 before_test:
 - appveyor-retry dotnet restore "test\Gestaoaju.Test.csproj"
+
 test_script:
 - dotnet test "test\Gestaoaju.Test.csproj" -c %CONFIGURATION%
+
 cache:
 - '%USERPROFILE%\.nuget\packages'
