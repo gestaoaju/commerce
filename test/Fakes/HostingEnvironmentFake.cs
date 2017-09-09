@@ -26,6 +26,12 @@ namespace Gestaoaju.Fakes
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
+
+            Console.WriteLine("1 = " + Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER"));
+            Console.WriteLine("2 = " + Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER "));
+            Console.WriteLine("3 = " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+            Console.WriteLine("4 = " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT "));
+            Console.WriteLine("5 = " + AppContext.BaseDirectory);
         }
     }
 }
