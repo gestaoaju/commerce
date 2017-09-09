@@ -2,6 +2,7 @@
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
 using System;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;
 
@@ -16,22 +17,28 @@ namespace Gestaoaju.Fakes
         public string ContentRootPath { get; set; }
         public IFileProvider ContentRootFileProvider { get; set; }
 
-        private string BuildEnvironment => this.IsEnvironment("CI") ? "Release" : "Debug";
+        private string GetCurrentBuildPath()
+        {
+            if (this.IsEnvironment("CI"))
+            {
+                var buildFolder = Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER");
+                return $@"{buildFolder}\src\bin\Any CPU\Release\netcoreapp2.0";
+            }
+
+            return AppContext.BaseDirectory.Replace(@"test\bin\Debug\netcoreapp2.0", "src");
+        }
 
         public HostingEnvironmentFake()
         {
             EnvironmentName = "Test";
             ApplicationName = "Gestaoaju.Test";
-            ContentRootPath = AppContext.BaseDirectory.Replace($@"test\bin\{BuildEnvironment}\netcoreapp2.0", "src");
+            ContentRootPath = GetCurrentBuildPath();
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
 
-            Console.WriteLine("1 = " + Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER"));
-            Console.WriteLine("2 = " + Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER "));
-            Console.WriteLine("3 = " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
-            Console.WriteLine("4 = " + Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT "));
-            Console.WriteLine("5 = " + AppContext.BaseDirectory);
+            Console.WriteLine($"CurrentBuildPath={GetCurrentBuildPath()}");
+            Console.WriteLine($"CurrentBuildPathExists={Directory.Exists(GetCurrentBuildPath())}");
         }
     }
 }
