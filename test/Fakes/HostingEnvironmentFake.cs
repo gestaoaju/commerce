@@ -17,35 +17,14 @@ namespace Gestaoaju.Fakes
         public string ContentRootPath { get; set; }
         public IFileProvider ContentRootFileProvider { get; set; }
 
-        private string AppVeyorBuildFolder
-        {
-            get
-            {
-                var buildFolder = Environment.GetEnvironmentVariable("APPVEYOR_BUILD_FOLDER");
-
-                if (buildFolder == null)
-                {
-                    return null;
-                }
-
-                return $@"{buildFolder}\src\bin\Any CPU\Release\netcoreapp2.0";
-            }
-        }
-
-        private string LocalBuildFolder => AppContext.BaseDirectory
-            .Replace(@"test\bin\Debug\netcoreapp2.0", "src");
-
         public HostingEnvironmentFake()
         {
             EnvironmentName = "Test";
             ApplicationName = "Gestaoaju.Test";
-            ContentRootPath = AppVeyorBuildFolder ?? LocalBuildFolder;
+            ContentRootPath = AppContext.BaseDirectory;
             WebRootPath = ContentRootPath;
             ContentRootFileProvider = new PhysicalFileProvider(ContentRootPath);
             WebRootFileProvider = new PhysicalFileProvider(ContentRootPath);
-
-            Console.WriteLine($"CurrentBuildPath={ContentRootPath}");
-            Console.WriteLine($"CurrentBuildPathExists={Directory.Exists(ContentRootPath)}");
         }
     }
 }
