@@ -6,9 +6,6 @@ version: '1.0.{build}'
 
 os: Visual Studio 2017
 
-environment:
-  ASPNETCORE_ENVIRONMENT: CI
-
 configuration: Release
 
 platform: Any CPU
