@@ -1,7 +1,6 @@
 ﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-using Gestaoaju.Authorization;
 using Gestaoaju.Extensions.DependencyInjection;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
@@ -36,14 +35,11 @@ namespace Gestaoaju
             services.Configure<RavenOptions>(Configuration.GetSection("Sentry"));
             services.Configure<SmtpOptions>(Configuration.GetSection("Smtp"));
 
-            services.AddJwtAuthentication(options =>
-            {
-                Configuration.GetSection("Authorization").Bind(options);
-            });
+            services.AddCookieAuthentication();
 
             services.AddMvc(options =>
             {
-                options.UseJwtAuthorizeFilter();
+                options.UseAuthorizeFilter();
                 options.UseCustomFilters();
             });
             

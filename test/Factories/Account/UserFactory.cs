@@ -11,6 +11,8 @@ namespace Gestaoaju.Factories.Account
 {
     public static class UserFactory
     {
+        public const string Password = "0123456789";
+
         private static int emailId;
 
         public static User BuildUser(this AppDbContext context)
@@ -19,12 +21,11 @@ namespace Gestaoaju.Factories.Account
             {
                 Name = "User Test",
                 Email = $"user-{++emailId}@test.com",
-                Password = "12345678"
+                Password = Password
             };
         }
 
-        public static User CreateUser(this AppDbContext context,
-            Tenant tenant = null, bool authenticated = false)
+        public static User CreateUser(this AppDbContext context, Tenant tenant = null)
         {
             User user = context.BuildUser();
             user.Salt = Guid.NewGuid().ToString("N");
@@ -32,12 +33,7 @@ namespace Gestaoaju.Factories.Account
             user.LastChangePassword = DateTime.UtcNow.Date.AddDays(-1);
             user.Tenant = tenant ?? context.CreateTenant();
 
-            if (authenticated)
-            {
-                user.AccessCode = new AccessCode().ToString();
-            }
-
-            user = context.Users.Add(user).Entity;
+            context.Users.Add(user);
             context.SaveChanges();
 
             return user;

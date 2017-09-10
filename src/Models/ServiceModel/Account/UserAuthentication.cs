@@ -37,7 +37,7 @@ namespace Gestaoaju.Models.ServiceModel.Account
             return true;
         }
 
-        public async Task<bool> SigninAsync(string email, string password)
+        public async Task<bool> SignInAsync(string email, string password)
         {
             User = await Context.Users
                 .WhereEmail(email)
@@ -59,7 +59,7 @@ namespace Gestaoaju.Models.ServiceModel.Account
             return User != null && User.AccessCode != null;
         }
 
-        public async Task SignoutAsync(string accessCode)
+        public async Task SignOutAsync(string accessCode)
         {
             User = await Context.Users
                 .WhereAccessCode(accessCode)

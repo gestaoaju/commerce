@@ -10,7 +10,7 @@ namespace Gestaoaju.Extensions.DependencyInjection
 {
     public static class MvcOptionsExtensions
     {
-        public static void UseJwtAuthorizeFilter(this MvcOptions options)
+        public static void UseAuthorizeFilter(this MvcOptions options)
         {
             var policy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()

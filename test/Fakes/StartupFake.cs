@@ -1,7 +1,6 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-using Gestaoaju.Authorization;
 using Gestaoaju.Extensions.DependencyInjection;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
@@ -32,16 +31,11 @@ namespace Gestaoaju.Fakes
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddJwtAuthentication(options =>
-            {
-                options.Issuer = "auth.api.test.com";
-                options.Audience = "ApiTestAudience";
-                options.SecretKey = "ApiTestSecretKey";
-            });
+            services.AddCookieAuthentication();
 
             services.AddMvc(options =>
             {
-                options.UseJwtAuthorizeFilter();
+                options.UseAuthorizeFilter();
                 options.UseCustomFilters();
             });
             

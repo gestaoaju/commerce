@@ -2,22 +2,23 @@
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
 using System.Threading.Tasks;
+using Gestaoaju.Models.EntityModel.Account.Users;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gestaoaju.Results.Security
+namespace Gestaoaju.Results.Common
 {
-    public class SecurityTokenJson : IActionResult
+    public class UserIdentityJson : IActionResult
     {
-        private string token;
+        private User user;
 
-        public SecurityTokenJson(string token)
+        public UserIdentityJson(User user)
         {
-            this.token = token;
+            this.user = user;
         }
 
         public async Task ExecuteResultAsync(ActionContext context)
         {
-            var json = new { token = token };
+            var json = new { name = user.Name };
             await new JsonResult(json).ExecuteResultAsync(context);
         }
     }

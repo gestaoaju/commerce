@@ -17,9 +17,11 @@ namespace Gestaoaju.Infrastructure.Security
             key = Guid.NewGuid().ToByteArray();
         }
 
+        public byte[] ToArray() => key.Concat(time).ToArray();
+
         public override string ToString()
         {
-            return BitConverter.ToString(key.Concat(time).ToArray()).Replace("-", string.Empty);
+            return BitConverter.ToString(ToArray()).Replace("-", string.Empty).ToLower();
         }
     }
 }
