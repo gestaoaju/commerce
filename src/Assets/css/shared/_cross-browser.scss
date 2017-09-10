@@ -37,6 +37,14 @@
     box-sizing: $box-sizing;
 }
 
+@mixin calc($property, $calc)
+{
+    #{$property}: -moz-calc(#{$calc});
+    #{$property}: -webkit-calc(#{$calc});
+    #{$property}: -o-calc(#{$calc});
+    #{$property}: calc(#{$calc});
+}
+
 @mixin input-placeholder-color($color)
 {
     &::-webkit-input-placeholder {

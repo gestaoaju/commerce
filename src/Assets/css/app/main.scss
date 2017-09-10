@@ -1,0 +1,133 @@
+// Copyright (c) gestaoaju.com.br - All rights reserved.
+// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+
+@import "../shared/cross-browser";
+@import "../shared/grid-system";
+@import "../shared/palette";
+
+.app, .app-nav, .app-content
+{
+    height: 100%;
+}
+
+.app
+{
+    &:before
+    {
+        content: '';
+        height: 100%;
+        float: left;
+    }
+
+    .app-header
+    {
+        background-color: $white;
+        position: relative;
+        height: 60px;
+        z-index: 1050;
+        @include box-shadow(0 2px 2px lighten($silver, 10%));
+
+        span
+        {
+            color: darken($asbestos, 20%);
+            line-height: 60px;
+            font-size: 14pt;
+            font-weight: 600;
+        }
+
+        button
+        {
+            height: 60px;
+
+            &:hover
+            {
+                background: $white;
+            }
+
+            .fa
+            {
+                color: $concrete;
+                font-size: 16pt;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .app-body
+    {
+        position: relative;
+        z-index: 1;
+    
+        &:after
+        {
+            content: "";
+            clear: both;
+            display: block;
+        }
+    
+        .wrapper
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .app-nav, .app-content
+    {
+        overflow: auto;
+    }
+    
+    .app-nav
+    {
+        background-color: lighten($clouds, 2%);
+        color: $graphite;
+        float: left;
+        padding: 15px 0;
+
+        .separator
+        {
+            border-top: 1px solid darken($clouds, 5%);
+            margin: 10px 0;
+        }
+
+        a.menu-item,
+        div.menu-item
+        {
+            color: lighten($graphite, 10%);
+            font-size: 11pt;
+            display: block;
+            padding: 15px 20px;
+        }
+
+        a.menu-item:hover
+        {
+            background-color: darken($clouds, 3%);
+            text-decoration: none;
+        }
+        
+        div.menu-item
+        {
+            color: $graphite;
+            font-weight: 600;
+            cursor: default;
+
+            .fa
+            {
+                color: $alizarin;
+            }
+        }
+
+        .fa
+        {
+            font-size: 13pt;
+            padding-right: 20px;
+        }
+    }
+    
+    .app-content
+    {
+        background-color: lighten($clouds, 5%);
+        padding: 30px;
+    }
+}

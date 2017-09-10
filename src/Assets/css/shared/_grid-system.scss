@@ -6,10 +6,12 @@
 @import "palette";
 @import "screen";
 
-$max-columns: 12;
+$grid-col-padding: 15px;
 
 @mixin column-size($screen-size)
 {
+    $max-columns: 12;
+
     @for $column from 1 through $max-columns
     {
         .grid-col.#{$screen-size}-#{$column}
@@ -30,7 +32,7 @@ $max-columns: 12;
 .grid-row
 {
     @include clearfix();
-    margin: 0 -15px;
+    margin: 0 ($grid-col-padding * -1);
 
     &.collapse
     {
@@ -55,7 +57,7 @@ $max-columns: 12;
     float: left;
     width: 100%;
     min-height: 1px;
-    padding: 0 15px;
+    padding: 0 $grid-col-padding;
 }
 
 @media #{$tiny-screen}

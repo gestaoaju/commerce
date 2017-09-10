@@ -1,17 +1,14 @@
 ﻿// Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
+@import "grid-system";
 @import "screen";
 
 .container
 {
-    padding: 0 15px;
+    padding: 0 $grid-col-padding;
     margin: 0 auto;
-
-    @media #{$large-screen}
-    {
-        width: 1170px;
-    }
+    width: 100%;
 }
 
 .group

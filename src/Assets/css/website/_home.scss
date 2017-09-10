@@ -2,9 +2,18 @@
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
 @import "../shared/palette";
+@import "../shared/screen";
 
 .home
 {
+    .container
+    {
+        @media #{$large-screen}
+        {
+            width: 1170px;
+        }
+    }
+
     .header
     {
         background: $sun-flower;
@@ -64,7 +73,7 @@
             border-right: none;
             border-left: none;
             border-top: none;
-            background: $black;
+            background: $graphite;
             text-transform: none;
             font-size: 12pt;
 
@@ -74,7 +83,7 @@
             &:active:hover,
             &:active:focus
             {
-                background-color: darken($black, 10%);
+                background-color: darken($graphite, 10%);
                 border-bottom: 5px solid darken($sun-flower, 15%);
             }
 

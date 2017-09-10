@@ -9,9 +9,9 @@ namespace Gestaoaju.Controllers.App
     public class DashboardController : Controller
     {
         [Route("")]
-        public IActionResult Index()
+        public IActionResult Overview()
         {
-            return View("~/Views/App/Dashboard/Index.cshtml");
+            return View("~/Views/App/Dashboard/Overview.cshtml");
         }
     }
 }
