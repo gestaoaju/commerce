@@ -1,9 +1,20 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
+@import "../shared/animations";
 @import "../shared/cross-browser";
 @import "../shared/grid-system";
 @import "../shared/palette";
+
+@mixin app-nav-animation()
+{
+    @include animation(slide-out 1s forwards);
+    
+    &.open
+    {
+        @include animation(slide-in 1s forwards);
+    }
+}
 
 .app, .app-nav, .app-content
 {
@@ -23,6 +34,7 @@
     {
         background-color: $white;
         position: relative;
+        padding-left: 10px;
         height: 60px;
         z-index: 1050;
         @include box-shadow(0 2px 2px lighten($silver, 10%));
@@ -33,11 +45,14 @@
             line-height: 60px;
             font-size: 14pt;
             font-weight: 600;
+            padding-left: 10px;
         }
 
         button
         {
             height: 60px;
+            display: none;
+            margin-right: 0;
 
             &:hover
             {
@@ -48,7 +63,21 @@
             {
                 color: $concrete;
                 font-size: 16pt;
-                padding: 0 10px;
+            }
+
+            @media #{$tiny-screen}
+            {
+                display: inline-block;
+            }
+    
+            @media #{$compact-screen}
+            {
+                display: inline-block;
+            }
+    
+            @media #{$small-screen}
+            {
+                display: inline-block;
             }
         }
     }
@@ -56,7 +85,6 @@
     .app-body
     {
         position: relative;
-        z-index: 1;
     
         &:after
         {
@@ -84,6 +112,8 @@
         color: $graphite;
         float: left;
         padding: 15px 0;
+        overflow: hidden;
+        @include animation(slide-in 1s forwards);
 
         .separator
         {
@@ -98,6 +128,7 @@
             font-size: 11pt;
             display: block;
             padding: 15px 20px;
+            white-space: nowrap;
         }
 
         a.menu-item:hover
@@ -122,6 +153,21 @@
         {
             font-size: 13pt;
             padding-right: 20px;
+        }
+
+        @media #{$tiny-screen}
+        {
+            @include app-nav-animation();
+        }
+
+        @media #{$compact-screen}
+        {
+            @include app-nav-animation();
+        }
+
+        @media #{$small-screen}
+        {
+            @include app-nav-animation();
         }
     }
     

@@ -3,8 +3,20 @@
 
 @import "cross-browser";
 
-@include keyframes(fadeIn)
+@include keyframes(fade-in)
 {
     from { @include opacity(0); }
     to { @include opacity(1); }
+}
+
+@include keyframes(slide-in)
+{
+    from { max-width: 0; }
+    to { max-width: 100%; }
+}
+
+@include keyframes(slide-out)
+{
+    from { max-width: 100%; }
+    to { max-width: 0%; }
 }

@@ -21,9 +21,9 @@ $grid-col-padding: 15px;
     }
 }
 
-@mixin column-hidden($screen-size)
+@mixin hidden($screen-size)
 {
-    .hide-#{$screen-size}
+    .#{$screen-size}-hide
     {
         display: none;
     }
@@ -63,29 +63,29 @@ $grid-col-padding: 15px;
 @media #{$tiny-screen}
 {
     @include column-size(tiny);
-    @include column-hidden(tiny);
+    @include hidden(tiny);
 }
 
 @media #{$compact-screen}
 {
     @include column-size(compact);
-    @include column-hidden(compact);
+    @include hidden(compact);
 }
 
 @media #{$small-screen}
 {
     @include column-size(small);
-    @include column-hidden(small);
+    @include hidden(small);
 }
 
 @media #{$medium-screen}
 {
     @include column-size(medium);
-    @include column-hidden(medium);
+    @include hidden(medium);
 }
 
 @media #{$large-screen}
 {
     @include column-size(large);
-    @include column-hidden(large);
+    @include hidden(large);
 }
