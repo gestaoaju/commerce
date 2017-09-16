@@ -1,8 +1,6 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-import Vue from 'vue';
-import VueResource from 'vue-resource';
 import { email, required, minLength, maxLength } from 'vuelidate/lib/validators';
 import { ApiResponse } from 'lib/api/api-response.es6';
 import { AppComponent } from 'app/app-component.es6';
