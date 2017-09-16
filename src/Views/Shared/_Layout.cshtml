@@ -14,7 +14,9 @@
     <title>Gestaoaju</title>
 </head>
 <body>
-    @RenderBody()
+    <div id="app">
+        @RenderBody()
+    </div>
     <script type="text/javascript" src="/js/common.min.js" asp-append-version="true"></script>
     @RenderSection("scripts", required: false)
 </body>

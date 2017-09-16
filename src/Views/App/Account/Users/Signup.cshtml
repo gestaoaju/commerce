@@ -10,7 +10,7 @@
     <script type="text/javascript" src="/js/signup.min.js" asp-append-version="true"></script>
 }
 
-<div id="signup" class="sign-form">
+<div class="sign-form">
     <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
             <div v-for="error in errors">{{error}}</div>

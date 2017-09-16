@@ -3,7 +3,7 @@
 
 import Vue from 'vue';
 
-export default Vue.component('app-message', {
+export const Message = Vue.extend({
     props: {
         visible: Boolean,
         mode: {

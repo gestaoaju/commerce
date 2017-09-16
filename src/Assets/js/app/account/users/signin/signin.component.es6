@@ -3,14 +3,12 @@
 
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import { AppComponent } from 'app/app-component.es6';
 import { ApiResponse } from 'lib/api-response.es6';
-import { ApiUser } from 'lib/api-user.es6';
 import { SigninViewModel } from './signin.viewmodel.es6';
 import { email, required, minLength } from 'vuelidate/lib/validators';
-import 'app/shared/app-message.component.es6';
 
-export default new Vue({
-    el: '#signin',
+export default new AppComponent({
     data: {
         loading: false,
         invalid: false,
