@@ -3,10 +3,10 @@
 
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import { AppComponent } from 'app/app-component.es6';
-import { ApiResponse } from 'lib/api-response.es6';
-import { SignupViewModel } from './signup.viewmodel.es6';
 import { email, required, minLength, maxLength } from 'vuelidate/lib/validators';
+import { ApiResponse } from 'lib/api/api-response.es6';
+import { AppComponent } from 'app/app-component.es6';
+import { SignupViewModel } from './signup.viewmodel.es6';
 
 export default new AppComponent({
     data: {

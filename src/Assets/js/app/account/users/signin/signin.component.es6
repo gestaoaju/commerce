@@ -3,10 +3,10 @@
 
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import { AppComponent } from 'app/app-component.es6';
-import { ApiResponse } from 'lib/api-response.es6';
-import { SigninViewModel } from './signin.viewmodel.es6';
 import { email, required, minLength } from 'vuelidate/lib/validators';
+import { AppComponent } from 'app/app-component.es6';
+import { ApiResponse } from 'lib/api/api-response.es6';
+import { SigninViewModel } from './signin.viewmodel.es6';
 
 export default new AppComponent({
     data: {
@@ -29,7 +29,6 @@ export default new AppComponent({
 
                 this.$http.post('signin', new SigninViewModel(this.$data))
                     .then((response) => {
-                        new ApiUser(response.body).save();
                         window.location.href = '/dashboard';
                     }).catch((response) => {
                         this.errors = new ApiResponse(response).getErrors();

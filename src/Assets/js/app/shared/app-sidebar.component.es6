@@ -3,10 +3,7 @@ import Vue from 'vue';
 export const Sidebar = Vue.extend({
     methods: {
         showSidebar() {
-            console.log('BLABLA');
+            // TODO
         }
-    },
-    mouted() {
-        console.log('mounted');
     }
 });
