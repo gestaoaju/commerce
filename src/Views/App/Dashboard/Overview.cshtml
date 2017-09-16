@@ -6,17 +6,19 @@
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="app">
-    <div class="app-header">
-        <button type="button">
-            <i class="fa fa-bars"></i>
-        </button>
-        <span>
-            gestaoaju
-        </span>
-    </div>
     <div class="app-body">
         <div class="wrapper">
-            <div class="app-nav">
+            <button type="button" class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="app-sidebar">
+                <a href="javascript:;" class="user-profile">
+                    <img src="/img/user.png">
+                    <div>Marx J. Moura</div>
+                </a>
+
+                <div class="separator"></div>
+
                 <a href="javascript:;" class="menu-item">
                     <i class="fa fa-barcode"></i>
                     Catálogo
@@ -61,7 +63,12 @@
                 </a>
             </div>
             <div class="app-content">
-                Conteúdo da página <strong>Comercial</strong>
+                <div class="page-title">
+                    Título da página
+                </div>
+                <div class="page-content">
+                    Conteúdo da página <strong>Comercial</strong>
+                </div>
             </div>
         </div>
     </div>

@@ -3,18 +3,18 @@
 
 @import "fonts/open-sans";
 
-@import "shared/animations";
 @import "shared/button";
 @import "shared/containers";
 @import "shared/global";
 @import "shared/grid-system";
 @import "shared/inputs";
 @import "shared/link";
-@import "shared/message";
 @import "shared/loading";
+@import "shared/message";
 @import "shared/typography";
 
 @import "app/main";
+@import "app/page";
 
 @import "website/error";
 @import "website/home";
