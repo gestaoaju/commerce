@@ -24,23 +24,20 @@ export default new Vue({
     },
     methods: {
         signin() {
-            if (this.$v.$invalid) {
-                this.invalid = true;
-                return;
+            this.invalid = this.$v.$invalid;
+
+            if (!(this.invalid || this.loading)) {
+                this.loading = true;
+
+                this.$http.post('signin', new SigninViewModel(this.$data))
+                    .then((response) => {
+                        new ApiUser(response.body).save();
+                        window.location.href = '/dashboard';
+                    }).catch((response) => {
+                        this.errors = new ApiResponse(response).getErrors();
+                        this.loading = false;
+                    });
             }
-
-            if (this.loading) return;
-
-            this.loading = true;
-
-            this.$http.post('signin', new SigninViewModel(this.$data))
-                .then((response) => {
-                    new ApiUser(response.body).save();
-                    window.location.href = '/dashboard';
-                }).catch((response) => {
-                    this.errors = new ApiResponse(response).getErrors();
-                    this.loading = false;
-                });
         },
         tryAgain() {
             this.invalid = false;

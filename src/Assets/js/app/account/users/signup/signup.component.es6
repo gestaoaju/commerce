@@ -26,22 +26,19 @@ export default new Vue({
     },
     methods: {
         signup() {
-            if (this.$v.$invalid) {
-                this.invalid = true;
-                return;
+            this.invalid = this.$v.$invalid;
+            
+            if (!(this.invalid || this.loading)) {
+                this.loading = true;
+
+                this.$http.post('signup', new SignupViewModel(this.$data))
+                    .then((response) => {
+                        window.location.href = '/dashboard';
+                    }).catch((response) => {
+                        this.errors = new ApiResponse(response).getErrors();
+                        this.loading = false;
+                    });
             }
-
-            if (this.loading) return;
-
-            this.loading = true;
-
-            this.$http.post('signup', new SignupViewModel(this.$data))
-                .then((response) => {
-                    window.location.href = '/dashboard';
-                }).catch((response) => {
-                    this.errors = new ApiResponse(response).getErrors();
-                    this.loading = false;
-                });
         },
         tryAgain() {
             this.invalid = false;
