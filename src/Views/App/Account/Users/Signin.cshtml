@@ -5,6 +5,11 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
+@section scripts
+{
+    <script type="text/javascript" src="/js/signin.min.js" asp-append-version="true"></script>
+}
+
 <div id="signin" class="sign-form">
     <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
@@ -68,8 +73,3 @@
         </div>
     </div>
 </div>
-
-@section scripts
-{
-    <script type="text/javascript" src="/js/signin.min.js" asp-append-version="true"></script>
-}

@@ -7,7 +7,7 @@ import { ApiResponse } from 'lib/api-response.es6';
 import { ApiUser } from 'lib/api-user.es6';
 import { SigninViewModel } from './signin.viewmodel.es6';
 import { email, required, minLength } from 'vuelidate/lib/validators';
-import 'app/shared/message.component.es6';
+import 'app/shared/app-message.component.es6';
 
 export default new Vue({
     el: '#signin',
