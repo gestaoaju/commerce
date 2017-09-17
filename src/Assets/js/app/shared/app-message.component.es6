@@ -4,6 +4,13 @@
 import Vue from 'vue';
 
 export const Message = Vue.extend({
+    template: `
+        <div class="message" :class="[mode, { 'show': visible }]">
+            <div class="message-content">
+                <slot></slot>
+            </div>
+        </div>
+    `,
     props: {
         visible: Boolean,
         mode: {
@@ -14,13 +21,6 @@ export const Message = Vue.extend({
             }
         }
     },
-    template: `
-        <div class="message" :class="[mode, { 'show': visible }]">
-            <div class="message-content">
-                <slot></slot>
-            </div>
-        </div>
-    `,
     watch: {
         visible() {
             if (this.visible) {

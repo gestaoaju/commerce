@@ -5,65 +5,68 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
+@section scripts
+{
+    @RenderSection("scripts", required: false)
+}
+
 <div class="app">
     <div class="app-body">
         <div class="wrapper">
-            <app-sidebar>
-                <button type="button" class="sidebar-toggle" v-on:click="showSidebar()">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <div class="app-sidebar">
-                    <a href="javascript:;" class="user-profile">
-                        <img src="/img/user.png">
-                        <div>Marx J. Moura</div>
-                    </a>
+            <button type="button" class="sidebar-toggle" v-on:click="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="app-sidebar" v-bind:class="sidebar">
+                <a href="javascript:;" class="user-profile">
+                    <img src="/img/user.png">
+                    <div>Marx J. Moura</div>
+                </a>
 
-                    <div class="separator"></div>
+                <div class="separator"></div>
 
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-barcode"></i>
-                        Catálogo
-                    </a>
-                    <div class="menu-item">
-                        <i class="fa fa-shopping-cart"></i>
-                        Comercial
-                    </div>
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-truck"></i>
-                        Estoque
-                    </a>
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-bar-chart"></i>
-                        Financeiro
-                    </a>
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-pie-chart"></i>
-                        Gráficos
-                    </a>
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-users"></i>
-                        Usuários
-                    </a>
-
-                    <div class="separator"></div>
-
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-cog"></i>
-                        Configurações
-                    </a>
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-ticket"></i>
-                        Suporte técnico
-                    </a>
-
-                    <div class="separator"></div>
-
-                    <a href="javascript:;" class="menu-item">
-                        <i class="fa fa-power-off"></i>
-                        Sair
-                    </a>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-barcode"></i>
+                    Catálogo
+                </a>
+                <div class="menu-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    Comercial
                 </div>
-            </app-sidebar>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-truck"></i>
+                    Estoque
+                </a>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-bar-chart"></i>
+                    Financeiro
+                </a>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-pie-chart"></i>
+                    Gráficos
+                </a>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-users"></i>
+                    Usuários
+                </a>
+
+                <div class="separator"></div>
+
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-cog"></i>
+                    Configurações
+                </a>
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-ticket"></i>
+                    Suporte técnico
+                </a>
+
+                <div class="separator"></div>
+
+                <a href="javascript:;" class="menu-item">
+                    <i class="fa fa-power-off"></i>
+                    Sair
+                </a>
+            </div>
             <div class="app-content">
                 @RenderBody()
             </div>

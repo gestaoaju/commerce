@@ -7,7 +7,6 @@ import numeral from 'numeral';
 import { currency, number } from 'lib/filters/numeric.filters.es6';
 import { date, datetime } from 'lib/filters/datetime.filters.es6';
 import { Message } from 'app/shared/app-message.component.es6';
-import { Sidebar } from 'app/shared/app-sidebar.component.es6';
 
 export class AppComponent extends Vue {
     constructor(options) {
@@ -27,10 +26,15 @@ export class AppComponent extends Vue {
 
     static addSharedComponents() {
         Vue.component('app-message', Message);
-        Vue.component('app-sidebar', Sidebar);
     }
 
     static bind(options) {
         options.el = '#app';
+        options.data = options.data || {};
+        options.data.sidebar = { show: false };
+        options.methods = options.methods || {};
+        options.methods.toggleSidebar = () => {
+            options.data.sidebar.show = !options.data.sidebar.show;
+        };
     }
 }
