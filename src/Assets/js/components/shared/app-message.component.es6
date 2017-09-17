@@ -24,9 +24,9 @@ export const Message = Vue.extend({
     watch: {
         visible() {
             if (this.visible) {
-                document.body.classList.add('message-show')
+                document.body.classList.add('message-show');
             } else {
-                document.body.classList.remove('message-show')
+                document.body.classList.remove('message-show');
             }
         }
     }

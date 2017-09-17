@@ -21,7 +21,7 @@ module.exports = {
         `${assets}/js/config/numeral.config.es6`,
         `${assets}/js/config/vue.config.es6`
     ],
-    'js/overview.min.js': `${assets}/js/app/dashboard/overview.component.es6`,
-    'js/signin.min.js': `${assets}/js/app/account/users/signin/signin.component.es6`,
-    'js/signup.min.js': `${assets}/js/app/account/users/signup/signup.component.es6`
+    'js/overview.min.js': `${assets}/js/components/dashboard/overview.component.es6`,
+    'js/signin.min.js': `${assets}/js/components/account/users/signin/signin.component.es6`,
+    'js/signup.min.js': `${assets}/js/components/account/users/signup/signup.component.es6`
 };

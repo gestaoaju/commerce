@@ -2,8 +2,8 @@
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
 import { email, required, minLength, maxLength } from 'vuelidate/lib/validators';
-import { ApiResponse } from 'lib/api/api-response.es6';
-import { AppComponent } from 'app/app-component.es6';
+import { ApiResponse } from 'api/api-response.es6';
+import { AppComponent } from 'components/app-component.es6';
 import { SignupViewModel } from './signup.viewmodel.es6';
 
 export default new AppComponent({
