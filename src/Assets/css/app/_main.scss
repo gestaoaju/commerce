@@ -1,10 +1,6 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
-@import "../shared/cross-browser";
-@import "../shared/grid-system";
-@import "../shared/palette";
-
 .app, .app-sidebar, .app-content
 {
     height: 100%;
@@ -14,7 +10,7 @@
 {
     &:before
     {
-        content: '';
+        content: "";
         height: 100%;
         float: left;
     }
@@ -40,11 +36,12 @@
             {
                 background: transparent;
                 color: $concrete;
-                font-size: 18pt;
+                font-size: 24pt;
                 overflow: hidden;
                 position: absolute;
-                top: 15px;
-                right: 5px;
+                z-index: 2050;
+                top: 10px;
+                right: 25px;
                 @include transform(scale(1));
                 @include transition(all .3s);
                 
@@ -72,6 +69,7 @@
                 padding: 15px 0;
                 overflow-x: hidden;
                 overflow-y: auto;
+                z-index: 2050;
                 @include transition(all .5s);
         
                 @media #{$tiny-screen}
@@ -134,14 +132,30 @@
                     margin: 10px 0;
                 }
         
-                a.menu-item,
-                div.menu-item
+                a.menu-item
                 {
                     color: lighten($graphite, 10%);
                     font-size: 11pt;
                     display: block;
                     padding: 15px 20px;
                     white-space: nowrap;
+
+                    &.active
+                    {
+                        color: $graphite;
+                        font-weight: 600;
+            
+                        .fa
+                        {
+                            color: $alizarin;
+                        }
+                    }
+
+                    &:hover
+                    {
+                        background-color: darken($clouds, 3%);
+                        text-decoration: none;
+                    }
         
                     .fa
                     {
@@ -149,30 +163,14 @@
                         padding-right: 20px;
                     }
                 }
-        
-                a.menu-item:hover
-                {
-                    background-color: darken($clouds, 3%);
-                    text-decoration: none;
-                }
-                
-                div.menu-item
-                {
-                    color: $graphite;
-                    font-weight: 600;
-                    cursor: default;
-        
-                    .fa
-                    {
-                        color: $alizarin;
-                    }
-                }
             }
 
             .app-content
             {
                 background-color: lighten($clouds, 5%);
+                position: relative;
                 overflow: auto;
+                z-index: 1050;
                 @include transition(all .5s);
             }
         }

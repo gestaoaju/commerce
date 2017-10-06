@@ -1,14 +1,24 @@
-// Copyright (c) gestaoaju.com.br - All rights reserved.
-// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+/*
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ */
 
 .page-title
 {
-    padding: 30px;
     background: $white;
     border-bottom: 1px solid $clouds;
+    padding: 30px;
+    position: fixed;
+    width: 100%;
+    @include transition(all, 0.3);
+
+    &.shaded
+    {
+        @include box-shadow(0 1px 3px darken($white, 10%));
+    }
 }
 
 .page-content
 {
-    padding: 30px;
+    padding: 110px 30px 30px 30px;
 }

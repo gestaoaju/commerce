@@ -45,7 +45,7 @@ body.message-show {
         padding: 15px;
         -webkit-overflow-scrolling: touch;
         text-align: center;
-        opacity: 0;
+        @include opacity(0);
         @include box-shadow(0 1px 3px darken($white, 30%));
         @include transform(translateY(-200%));
         @include transition(all .3s);
@@ -65,7 +65,7 @@ body.message-show {
         @include visibility(visible);
 
         .message-content {
-            opacity: 1;
+            @include opacity(1);
             @include transform(translateY(0%));
         }
     }

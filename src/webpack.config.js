@@ -1,9 +1,11 @@
-// Copyright (c) gestaoaju.com.br - All rights reserved.
-// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+/*
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ */
 
 const path = require('path');
 const webpack = require('webpack');
-const chunks = require('./webpack.chunks.config.js');
+const chunks = require('./webpack.chunks.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -20,7 +22,8 @@ module.exports = {
             'node_modules'
         ],
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: 'vue/dist/vue.js',
+            jquery: 'jquery/dist/jquery.slim.js'
         }
     },
     module: {
@@ -45,11 +48,21 @@ module.exports = {
         }]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false,
+            minimize: true,
+            output: {
+                comments: false
+            }
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'js/common.min.js',
             filename: '[name]',
             minChunks: Infinity
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
         new ExtractTextPlugin('[name]', {
             allChunks: true

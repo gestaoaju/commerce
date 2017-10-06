@@ -1,6 +1,9 @@
-// Copyright (c) gestaoaju.com.br - All rights reserved.
-// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+/*
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ */
 
+import $ from 'jquery';
 import Vue from 'vue';
 
 export const Message = Vue.extend({
@@ -24,9 +27,9 @@ export const Message = Vue.extend({
     watch: {
         visible() {
             if (this.visible) {
-                document.body.classList.add('message-show');
+                $('body').addClass('message-show');
             } else {
-                document.body.classList.remove('message-show');
+                $('body').removeClass('message-show');
             }
         }
     }

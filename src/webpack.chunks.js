@@ -11,6 +11,7 @@ module.exports = {
         `${assets}/css/compile.scss`
     ],
     'js/common.min.js': [
+        'jquery/dist/jquery.slim.js',
         'moment/src/moment.js',
         'numeral/src/numeral.js',
         'vue/dist/vue.js',
@@ -21,7 +22,7 @@ module.exports = {
         `${assets}/js/config/numeral.config.es6`,
         `${assets}/js/config/vue.config.es6`
     ],
-    'js/overview.min.js': `${assets}/js/components/dashboard/overview.component.es6`,
-    'js/signin.min.js': `${assets}/js/components/account/users/signin/signin.component.es6`,
-    'js/signup.min.js': `${assets}/js/components/account/users/signup/signup.component.es6`
+    'js/overview.min.js': `${assets}/js/app/dashboard/overview.component.es6`,
+    'js/signin.min.js': `${assets}/js/app/account/users/signin/signin.component.es6`,
+    'js/signup.min.js': `${assets}/js/app/account/users/signup/signup.component.es6`
 };

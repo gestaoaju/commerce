@@ -13,14 +13,12 @@ namespace Gestaoaju.Factories.Account
     {
         public const string Password = "0123456789";
 
-        private static int emailId;
-
         public static User BuildUser(this AppDbContext context)
         {
             return new User
             {
                 Name = "User Test",
-                Email = $"user-{++emailId}@test.com",
+                Email = $"user-{IdFactory.Id}@test.com",
                 Password = Password
             };
         }

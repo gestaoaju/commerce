@@ -1,7 +1,7 @@
 @*
-    Copyright (c) gestaoaju.com.br - All rights reserved.
-    Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
-*@
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ *@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
@@ -10,12 +10,13 @@
     @RenderSection("scripts", required: false)
 }
 
-<div class="app">
+<div id="app" class="app">
     <div class="app-body">
         <div class="wrapper">
             <button type="button" class="sidebar-toggle" v-on:click="toggleSidebar()">
                 <i class="fa fa-bars"></i>
             </button>
+
             <div class="app-sidebar" v-bind:class="sidebar">
                 <a href="javascript:;" class="user-profile">
                     <img src="/img/user.png">
@@ -28,10 +29,10 @@
                     <i class="fa fa-barcode"></i>
                     Catálogo
                 </a>
-                <div class="menu-item">
+                <a href="javascript:;" class="menu-item active">
                     <i class="fa fa-shopping-cart"></i>
                     Comercial
-                </div>
+                </a>
                 <a href="javascript:;" class="menu-item">
                     <i class="fa fa-truck"></i>
                     Estoque
@@ -67,6 +68,7 @@
                     Sair
                 </a>
             </div>
+            
             <div class="app-content">
                 @RenderBody()
             </div>

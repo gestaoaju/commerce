@@ -1,7 +1,7 @@
 @*
-    Copyright (c) gestaoaju.com.br - All rights reserved.
-    Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
-*@
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ *@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
@@ -10,7 +10,7 @@
     <script type="text/javascript" src="/js/signup.min.js" asp-append-version="true"></script>
 }
 
-<div class="sign-form">
+<div id="app" class="sign-form">
     <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
             <div v-for="error in errors">{{error}}</div>

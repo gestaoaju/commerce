@@ -9,8 +9,7 @@ namespace Gestaoaju.Factories.Account
 {
     public static class TenantFactory
     {
-        public static Tenant CreateTenant(this AppDbContext context,
-             string owner = "tenant@email.com")
+        public static Tenant CreateTenant(this AppDbContext context, string owner = "tenant@email.com")
         {
             var tenant = new Tenant
             {
