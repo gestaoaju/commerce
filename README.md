@@ -8,8 +8,8 @@ Management platform for buying, selling and renting products.
 
 - Install [.NET Core 2.0](https://github.com/dotnet/core/)
 - Install [Node JS](https://nodejs.org/)
-- Install [Visual Studio Code](https://code.visualstudio.com/)
 - Install [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads/)
+- Install [VS Code](https://code.visualstudio.com/) (or your preferred editor)
 
 Install some basic VS Code extensions:
 
@@ -37,7 +37,7 @@ Install some basic VS Code extensions:
 5. Install Node JS packages:  
 `npm install`
 
-6. Run webpack (build assets to wwwroot):  
+6. Build assets to wwwroot:  
 `npm start`
 
 7. Run the application:  
