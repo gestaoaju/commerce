@@ -3,6 +3,11 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
+.app-content.scrolled .page-title
+{
+    @include box-shadow(0 0 5px darken($white, 7%));
+}
+
 .page-title
 {
     background: $white;
@@ -11,14 +16,9 @@
     position: fixed;
     width: 100%;
     @include transition(all, 0.3);
-
-    &.shaded
-    {
-        @include box-shadow(0 1px 3px darken($white, 10%));
-    }
 }
 
 .page-content
 {
-    padding: 110px 30px 30px 30px;
+    padding: 105px 30px 30px 30px;
 }

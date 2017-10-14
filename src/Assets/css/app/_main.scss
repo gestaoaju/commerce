@@ -76,14 +76,14 @@
                 {
                     position: absolute;
                     max-width: 0%;
-                    @include box-shadow(0 0 10px lighten($black, 50%));
+                    @include box-shadow(0 0 5px lighten($black, 75%));
                 }
         
                 @media #{$compact-screen}
                 {
                     position: absolute;
                     max-width: 0%;
-                    @include box-shadow(0 0 10px lighten($black, 50%));
+                    @include box-shadow(0 0 5px lighten($black, 75%));
                 }
         
                 @media #{$small-screen}
@@ -137,7 +137,7 @@
                     color: lighten($graphite, 10%);
                     font-size: 11pt;
                     display: block;
-                    padding: 15px 20px;
+                    padding: 15px 30px 15px 20px;
                     white-space: nowrap;
 
                     &.active

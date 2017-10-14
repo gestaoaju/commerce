@@ -1,6 +1,7 @@
 // Copyright (c) gestaoaju.com.br - All rights reserved.
 // Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
 
+import $ from 'jquery';
 import Vue from 'vue';
 import moment from 'moment';
 import numeral from 'numeral';
@@ -12,6 +13,7 @@ export class AppComponent extends Vue {
     constructor(options) {
         AppComponent.addComponents();
         AppComponent.addFilters();
+        AppComponent.addEvents();
         AppComponent.bind(options)
 
         super(options);
@@ -37,5 +39,19 @@ export class AppComponent extends Vue {
         options.methods.toggleSidebar = () => {
             options.data.sidebar.show = !options.data.sidebar.show;
         };
+    }
+
+    static addEvents() {
+        $(function() {
+            const $content = $('.app-content');
+
+            $content.on('scroll', function () {
+                if ($content.scrollTop()) {
+                    $content.addClass('scrolled');
+                } else {
+                    $content.removeClass('scrolled');
+                }
+            });
+        });
     }
 }
