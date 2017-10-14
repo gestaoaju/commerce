@@ -13,8 +13,10 @@ export class AppComponent extends Vue {
     constructor(options) {
         AppComponent.addComponents();
         AppComponent.addFilters();
-        AppComponent.addEvents();
-        AppComponent.bind(options)
+        AppComponent.bindDefaultOptions(options);
+        AppComponent.bindSidebarOptions(options);
+        AppComponent.bindSpinnerOptions(options);
+        AppComponent.registerEvents();
 
         super(options);
     }
@@ -30,18 +32,40 @@ export class AppComponent extends Vue {
         Vue.filter('number', number);
     }
 
-    static bind(options) {
+    static bindDefaultOptions(options) {
         options.el = '#app';
         options.data = options.data || {};
-        options.data.sidebar = { show: false };
-        options.data.spinner = { show: false };
         options.methods = options.methods || {};
+    }
+
+    static bindSidebarOptions(options) {
+        options.data.sidebar = {
+            show: false
+        };
+
         options.methods.toggleSidebar = () => {
             options.data.sidebar.show = !options.data.sidebar.show;
         };
     }
 
-    static addEvents() {
+    static bindSpinnerOptions(options) {
+        options.data.spinner = {
+            show: false,
+            message: null
+        };
+
+        options.methods.showSpinner = (message) => {
+            options.data.spinner.message = message;
+            options.data.spinner.show = true;
+        };
+
+        options.methods.hideSpinner = () => {
+            options.data.spinner.message = null;
+            options.data.spinner.show = false;
+        };
+    }
+
+    static registerEvents() {
         $(function() {
             const $content = $('.app-content');
 
