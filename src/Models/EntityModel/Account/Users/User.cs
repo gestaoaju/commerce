@@ -1,9 +1,11 @@
-// Copyright (c) gestaoaju.com.br - All rights reserved.
-// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+/*
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ */
 
-using System;
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
+using System;
 
 namespace Gestaoaju.Models.EntityModel.Account.Users
 {

@@ -1,5 +1,7 @@
-// Copyright (c) gestaoaju.com.br - All rights reserved.
-// Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+/*
+ * Copyright (c) gestaoaju.com.br - All rights reserved.
+ * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
+ */
 
 using System.Text;
 using Microsoft.AspNetCore.Razor.TagHelpers;
