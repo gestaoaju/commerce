@@ -11,9 +11,13 @@
 }
 
 <div id="app" class="sign-form">
+    <div class="spinner" v-bind:class="{ 'show': loading }">
+        <div class="spinner-bar"></div>
+    </div>
+
     <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
-            <div v-for="error in errors">{{error}}</div>
+            <div v-for="error in errors" v-text="error"></div>
         </div>
         <button type="button" class="small outline" v-on:click="tryAgain()">
             Tentar novamente
@@ -47,20 +51,17 @@
             </p>
             <form v-on:submit.prevent="signin()">
                 <div class="group">
-                    <input type="text" v-model="username" maxlength="80" placeholder="E-mail"
-                        :disabled="loading" autofocus />
+                    <input type="text" v-model="username" maxlength="80" placeholder="E-mail" autofocus />
                 </div>
                 <div class="group">
-                    <input type="password" v-model="password" maxlength="20" placeholder="Senha"
-                        :disabled="loading">
+                    <input type="password" v-model="password" maxlength="20" placeholder="Senha">
                     <a href="/forgot-password" class="font-11">
                         Esqueci minha senha
                     </a>
                 </div>
                 <div class="group">
-                    <button type="submit" class="block shadow large sun-flower" :disabled="loading">
-                        <span v-show="!loading">Entrar</span>
-                        <span class="loading small" v-show="loading"></span>
+                    <button type="submit" class="block shadow large sun-flower">
+                        Entrar
                     </button>
                 </div>
                 <p>

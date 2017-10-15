@@ -10,9 +10,6 @@ import { SignupViewModel } from './signup.viewmodels.es6';
 
 export default new AppComponent({
     data: {
-        loading: false,
-        invalid: false,
-        errors: null,
         name: '',
         username: '',
         password: ''

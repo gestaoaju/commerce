@@ -11,9 +11,13 @@
 }
 
 <div id="app" class="sign-form">
+    <div class="spinner" v-bind:class="{ 'show': loading }">
+        <div class="spinner-bar"></div>
+    </div>
+
     <app-message :visible="errors !== null" :mode="'danger'">
         <div class="group">
-            <div v-for="error in errors">{{error}}</div>
+            <div v-for="error in errors" v-text="error"></div>
         </div>
         <button type="button" class="small outline" v-on:click="tryAgain()">
             Tentar novamente

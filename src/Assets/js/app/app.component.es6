@@ -16,8 +16,6 @@ export class AppComponent extends Vue {
         AppComponent.addComponents();
         AppComponent.addFilters();
         AppComponent.bindDefaultOptions(options);
-        AppComponent.bindSidebarOptions(options);
-        AppComponent.bindSpinnerOptions(options);
         AppComponent.registerEvents();
 
         super(options);
@@ -38,32 +36,21 @@ export class AppComponent extends Vue {
         options.el = '#app';
         options.data = options.data || {};
         options.methods = options.methods || {};
-    }
+        options.computed = options.computed || {};
 
-    static bindSidebarOptions(options) {
-        options.data.sidebar = {
-            show: false
+        options.data.loading = false;
+        options.data.invalid = false;
+        options.data.errors = null;
+        options.data.sidebar = { show: false };
+
+        options.computed.spinner = {
+            get() {
+                show: options.data.loading
+            }
         };
 
         options.methods.toggleSidebar = () => {
             options.data.sidebar.show = !options.data.sidebar.show;
-        };
-    }
-
-    static bindSpinnerOptions(options) {
-        options.data.spinner = {
-            show: false,
-            message: null
-        };
-
-        options.methods.showSpinner = (message) => {
-            options.data.spinner.message = message;
-            options.data.spinner.show = true;
-        };
-
-        options.methods.hideSpinner = () => {
-            options.data.spinner.message = null;
-            options.data.spinner.show = false;
         };
     }
 

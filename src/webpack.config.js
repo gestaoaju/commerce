@@ -74,5 +74,15 @@ module.exports = {
             from: path.resolve(__dirname, 'Assets/fonts'),
             to: 'fonts/[name].[ext]'
         }])
-    ]
+    ],
+    stats: {
+        assets: false,
+        chunks: false,
+        chunkModules: false,
+        colors: true,
+        hash: true,
+        timings: true,
+        version: false,
+        warnings: false
+    }
 };

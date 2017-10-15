@@ -11,6 +11,10 @@
 }
 
 <div id="app" class="app">
+    <div class="spinner" v-bind:class="spinner">
+        <div class="spinner-bar"></div>
+    </div>
+
     <div class="app-body">
         <div class="wrapper">
             <button type="button" class="sidebar-toggle" v-on:click="toggleSidebar()">
