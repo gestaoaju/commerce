@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;
+using Gestaoaju.Models.ViewModel.Account.Users;
 
 namespace Gestaoaju.Functional.Account
 {
@@ -23,8 +24,8 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
-            var json = new { email = user.Email, password = UserFactory.Password };
-            var response = await server.CreateClient().PostAsJsonAsync("signin", json);
+            var viewModel = new SigninViewModel { Email = user.Email, Password = UserFactory.Password };
+            var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
             server.AppDbContext.Entry(user).Reload();
 
@@ -44,6 +45,7 @@ namespace Gestaoaju.Functional.Account
                 "The Password field is required."
             };
 
+            Assert.Equal((HttpStatusCode)422, response.StatusCode);
             Assert.Equal(errors.OrderBy(e => e), expectedErrors.OrderBy(e => e));
         }
 
@@ -52,8 +54,8 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
-            var json = new { email = user.Email, password = "wrong" };
-            var response = await server.CreateClient().PostAsJsonAsync("signin", json);
+            var viewModel = new SigninViewModel { Email = user.Email, Password = "wrong" };
+            var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
             server.AppDbContext.Entry(user).Reload();
 
@@ -66,8 +68,8 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.AppDbContext.BuildUser();
-            var json = new { name = user.Name, email = user.Email, password = user.Password };
-            var response = await server.CreateClient().PostAsJsonAsync("signup", json);
+            var viewModel = new SignupViewModel { Name = user.Name, Email = user.Email, Password = user.Password };
+            var response = await server.CreateClient().PostAsJsonAsync("signup", viewModel);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.True(server.AppDbContext.Users.WhereEmail(user.Email).Any());
@@ -80,8 +82,8 @@ namespace Gestaoaju.Functional.Account
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
-            var json = new { name = "Another", email = user.Email, password = UserFactory.Password };
-            var response = await server.CreateClient().PostAsJsonAsync("signup", json);
+            var viewModel = new SignupViewModel { Name = "Another", Email = user.Email, Password = UserFactory.Password };
+            var response = await server.CreateClient().PostAsJsonAsync("signup", viewModel);
             var errors = await response.Content.ReadAsJsonAsync<List<string>>();
             var expectedErrors = new [] { "E-mail já cadastrado." };
 
@@ -103,6 +105,7 @@ namespace Gestaoaju.Functional.Account
                 "The Password field is required."
             };
 
+            Assert.Equal((HttpStatusCode)422, response.StatusCode);
             Assert.Equal(errors.OrderBy(e => e), expectedErrors.OrderBy(e => e));
         }
 
