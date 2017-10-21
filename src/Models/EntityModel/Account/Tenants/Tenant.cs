@@ -15,7 +15,6 @@ namespace Gestaoaju.Models.EntityModel.Account.Tenants
         public string Owner { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? DeactivatedAt { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

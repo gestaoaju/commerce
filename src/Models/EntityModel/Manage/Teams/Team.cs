@@ -5,21 +5,19 @@
 
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
-using System;
+using Gestaoaju.Models.EntityModel.Manage.TeamMembers;
+using Gestaoaju.Models.EntityModel.Manage.TeamRules;
+using System.Collections.Generic;
 
-namespace Gestaoaju.Models.EntityModel.Account.Users
+namespace Gestaoaju.Models.EntityModel.Manage.Teams
 {
-    public class User : ITenantScope
+    public class Team : ITenantScope
     {
         public int Id { get; set; }
         public int TenantId { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public string Salt { get; set; }
-        public string Password { get; set; }
-        public string AccessCode { get; set; }
-        public DateTime LastLogin { get; set; }
-        public DateTime LastChangePassword { get; set; }
         public Tenant Tenant { get; set; }
+        public ICollection<TeamMember> TeamMembers { get; set; }
+        public ICollection<TeamRule> TeamRules { get; set; }
     }
 }
