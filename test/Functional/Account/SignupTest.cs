@@ -8,63 +8,19 @@ using Gestaoaju.Factories.Account;
 using Gestaoaju.Fakes;
 using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
 using Gestaoaju.Models.EntityModel.Account.Users;
+using Gestaoaju.Models.ViewModel.Account.Users;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;
-using Gestaoaju.Models.ViewModel.Account.Users;
 
 namespace Gestaoaju.Functional.Account
 {
-    public class UserTest
+    public class SignupTest
     {
         [Fact]
-        public async Task SigninCorrectly()
-        {
-            var server = new ServerFake();
-            var user = server.AppDbContext.CreateUser();
-            var viewModel = new SigninViewModel { Email = user.Email, Password = UserFactory.Password };
-            var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
-
-            server.AppDbContext.Entry(user).Reload();
-
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(user.AccessCode);
-        }
-
-        [Fact]
-        public async Task SigninWithEmptyParameters()
-        {
-            var server = new ServerFake();
-            var response = await server.CreateClient().PostAsJsonAsync("signin");
-            var errors = await response.Content.ReadAsJsonAsync<List<string>>();
-            var expectedErrors = new []
-            {
-                "The Email field is required.",
-                "The Password field is required."
-            };
-
-            Assert.Equal((HttpStatusCode)422, response.StatusCode);
-            Assert.Equal(errors.OrderBy(e => e), expectedErrors.OrderBy(e => e));
-        }
-
-        [Fact]
-        public async Task SigninWithWrongPassword()
-        {
-            var server = new ServerFake();
-            var user = server.AppDbContext.CreateUser();
-            var viewModel = new SigninViewModel { Email = user.Email, Password = "wrong" };
-            var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
-
-            server.AppDbContext.Entry(user).Reload();
-
-            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
-            Assert.Null(user.AccessCode);
-        }
-
-        [Fact]
-        public async Task SignupCorrectly()
+        public async Task Correctly()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.BuildUser();
@@ -78,7 +34,7 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task SignupWithEmailAlreadyTaken()
+        public async Task WithEmailAlreadyTaken()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
@@ -93,7 +49,7 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task SignupWithEmptyParameters()
+        public async Task WithEmptyParameters()
         {
             var server = new ServerFake();
             var response = await server.CreateClient().PostAsJsonAsync("signup");
@@ -107,20 +63,6 @@ namespace Gestaoaju.Functional.Account
 
             Assert.Equal((HttpStatusCode)422, response.StatusCode);
             Assert.Equal(errors.OrderBy(e => e), expectedErrors.OrderBy(e => e));
-        }
-
-        [Fact]
-        public async Task Signout()
-        {
-            var server = new ServerFake();
-            var user = server.AppDbContext.CreateUser();
-            var response = await server.CreateAuthenticatedClient(user).GetAsync("signout");
-
-            server.AppDbContext.Entry(user).Reload();
-
-            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/signin", response.Headers.Location.ToString());
-            Assert.Null(user.AccessCode);
         }
     }
 }

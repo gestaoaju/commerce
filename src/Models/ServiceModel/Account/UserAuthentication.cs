@@ -28,7 +28,10 @@ namespace Gestaoaju.Models.ServiceModel.Account
 
             Sha256Hash oldPasswordHash = new Sha256Hash(oldPassword, User.Salt);
 
-            if (User.Password != oldPasswordHash.ToString()) return false;
+            if (User.Password != oldPasswordHash.ToString())
+            {
+                return false;
+            }
 
             User.Salt = Guid.NewGuid().ToString("N");
             User.Password = new Sha256Hash(newPassword, User.Salt).ToString();
