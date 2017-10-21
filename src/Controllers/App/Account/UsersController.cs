@@ -12,7 +12,8 @@ using Gestaoaju.Models.EntityModel.Account.Users;
 using Gestaoaju.Models.ServiceModel.Account;
 using Gestaoaju.Models.ViewModel.Account.Users;
 using Gestaoaju.Models.ViewModel.Emails;
-using Gestaoaju.Results.Common;
+using Gestaoaju.Results;
+using Gestaoaju.Results.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -81,7 +82,7 @@ namespace Gestaoaju.Controllers.Account
             if (await authentication.SignInAsync(viewModel.Email, viewModel.Password))
             {
                 await HttpContext.SignInAsync(authentication.User);
-                return new UserIdentityJson(authentication.User);
+                return new UserJson(authentication.User);
             }
 
             return Unauthorized();
@@ -95,7 +96,7 @@ namespace Gestaoaju.Controllers.Account
 
             if (userSignup.EmailAlreadyTaken)
             {
-                return new ModelErrorsJson("E-mail já cadastrado.");
+                return new ErrorsJson("E-mail já cadastrado.");
             }
 
             var viewResult = viewEngine.GetView(env.ContentRootPath,
@@ -113,7 +114,7 @@ namespace Gestaoaju.Controllers.Account
 
             await HttpContext.SignInAsync(userSignup.User);
 
-            return new UserIdentityJson(userSignup.User);
+            return new UserJson(userSignup.User);
         }
     }
 }

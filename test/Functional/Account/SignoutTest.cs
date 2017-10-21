@@ -14,7 +14,7 @@ namespace Gestaoaju.Functional.Account
     public class SignoutTest
     {
         [Fact]
-        public async Task Signout()
+        public async Task Correctly()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();

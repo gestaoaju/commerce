@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 using Gestaoaju.Models.EntityModel.Account.Users;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gestaoaju.Results.Common
+namespace Gestaoaju.Results.Account
 {
-    public class UserIdentityJson : IActionResult
+    public class UserJson : IActionResult
     {
-        private User user;
-
-        public UserIdentityJson(User user)
+        public UserJson(User user)
         {
-            this.user = user;
+            Name = user.Name;
         }
+
+        public string Name { get; set; }
 
         public async Task ExecuteResultAsync(ActionContext context)
         {
-            var json = new { name = user.Name };
-            await new JsonResult(json).ExecuteResultAsync(context);
+            await new JsonResult(this).ExecuteResultAsync(context);
         }
     }
 }
