@@ -4,6 +4,7 @@
  */
 
 using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
+using Gestaoaju.Models.EntityModel.Account.PasswordRecoveries;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 using Gestaoaju.Models.EntityModel.Account.Users;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace Gestaoaju.Models.EntityModel
     public class AppDbContext : DbContext
     {
         public DbSet<ClosureRequest> ClosureRequests => Set<ClosureRequest>();
+        public DbSet<PasswordRecovery> PasswordRecoveries => Set<PasswordRecovery>();
         public DbSet<Tenant> Tenants => Set<Tenant>();
         public DbSet<User> Users => Set<User>();
 
@@ -20,9 +22,10 @@ namespace Gestaoaju.Models.EntityModel
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.MapClosureRequest();
-            modelBuilder.MapTenant();
-            modelBuilder.MapUser();
+            modelBuilder.Entity<ClosureRequest>().Map();
+            modelBuilder.Entity<PasswordRecovery>().Map();
+            modelBuilder.Entity<Tenant>().Map();
+            modelBuilder.Entity<User>().Map();
         }
     }
 }
