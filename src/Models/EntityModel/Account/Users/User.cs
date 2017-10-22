@@ -5,6 +5,7 @@
 
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
+using Gestaoaju.Models.EntityModel.Manage.TeamMembers;
 using System;
 
 namespace Gestaoaju.Models.EntityModel.Account.Users
@@ -21,5 +22,6 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
         public DateTime LastLogin { get; set; }
         public DateTime LastChangePassword { get; set; }
         public Tenant Tenant { get; set; }
+        public TeamMember TeamMember { get; set; }
     }
 }

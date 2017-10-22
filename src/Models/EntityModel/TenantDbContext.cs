@@ -39,14 +39,13 @@ namespace Gestaoaju.Models.EntityModel
             return base.Set<TEntity>();
         }
 
-        public override Task<int> SaveChangesAsync(
-            CancellationToken cancellationToken = default(CancellationToken))
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             foreach (EntityEntry entry in ChangeTracker.Entries())
             {
-                if (entry.Entity is ITenantScope)
+                if (entry.Entity is ITenantScope entity)
                 {
-                    ((ITenantScope)entry.Entity).TenantId = tenantIdProvider.CurrentId;
+                    entity.TenantId = tenantIdProvider.CurrentId;
                 }
             }
 

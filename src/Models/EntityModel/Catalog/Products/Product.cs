@@ -4,7 +4,14 @@
  */
 
 using Gestaoaju.Infrastructure.Tenancy;
+using Gestaoaju.Models.EntityModel.Account.Tenants;
+using Gestaoaju.Models.EntityModel.Catalog.ProductPrices;
+using Gestaoaju.Models.EntityModel.Commercial.RentedProducts;
+using Gestaoaju.Models.EntityModel.Commercial.SaleProducts;
 using Gestaoaju.Models.EntityModel.Inventory;
+using Gestaoaju.Models.EntityModel.Inventory.ProductMovements;
+using Gestaoaju.Models.EntityModel.Inventory.PurchasedProducts;
+using System.Collections.Generic;
 
 namespace Gestaoaju.Models.EntityModel.Catalog.Products
 {
@@ -18,6 +25,12 @@ namespace Gestaoaju.Models.EntityModel.Catalog.Products
         public bool Marketed { get; set; }
         public bool IsManufactured { get; set; }
         public bool CanFraction { get; set; }
+        public virtual Tenant Tenant { get; set; }
+        public virtual ICollection<ProductPrice> ProductPrices { get; set; }
+        public virtual ICollection<ProductMovement> ProductMovements { get; set; }
+        public virtual ICollection<PurchasedProduct> PurchasedProducts { get; set; }
+        public virtual ICollection<RentedProduct> RentedProducts { get; set; }
+        public virtual ICollection<SaleProduct> SaleProducts { get; set; }
         public InventoryControl InventoryControl { get; set; }
     }
 }

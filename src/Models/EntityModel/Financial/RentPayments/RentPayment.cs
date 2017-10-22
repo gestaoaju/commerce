@@ -12,9 +12,9 @@ using Gestaoaju.Models.EntityModel.Financial.RentIncomes;
 using System;
 using System.Collections.Generic;
 
-namespace Gestaoaju.Models.EntityModel.Commercial.RentPayments
+namespace Gestaoaju.Models.EntityModel.Financial.RentPayments
 {
-    public class RentPayment : ITenantScope, IPayment
+    public class RentPayment : IPayment
     {
         public int Id { get; set; }
         public int TenantId { get; set; }

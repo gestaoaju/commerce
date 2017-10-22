@@ -10,7 +10,7 @@ using Gestaoaju.Models.EntityModel.Inventory.PurchaseOrders;
 using System;
 using System.Collections.Generic;
 
-namespace Gestaoaju.Models.EntityModel.Inventory.PurchasePayments
+namespace Gestaoaju.Models.EntityModel.Financial.PurchasePayments
 {
     public class PurchasePayment : ITenantScope
     {

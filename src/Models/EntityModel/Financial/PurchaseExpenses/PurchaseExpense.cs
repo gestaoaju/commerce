@@ -4,7 +4,7 @@
  */
 
 using Gestaoaju.Models.EntityModel.Account.Tenants;
-using Gestaoaju.Models.EntityModel.Inventory.PurchasePayments;
+using Gestaoaju.Models.EntityModel.Financial.PurchasePayments;
 using System;
 
 namespace Gestaoaju.Models.EntityModel.Financial.PurchaseExpenses

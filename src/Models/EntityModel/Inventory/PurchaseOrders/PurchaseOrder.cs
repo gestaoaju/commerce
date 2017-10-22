@@ -6,12 +6,12 @@
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 using Gestaoaju.Models.EntityModel.Financial;
+using Gestaoaju.Models.EntityModel.Financial.PurchasePayments;
 using Gestaoaju.Models.EntityModel.Financial.Wallets;
 using Gestaoaju.Models.EntityModel.Inventory;
 using Gestaoaju.Models.EntityModel.Manage.Stores;
 using Gestaoaju.Models.EntityModel.Inventory.Suppliers;
 using Gestaoaju.Models.EntityModel.Inventory.PurchasedProducts;
-using Gestaoaju.Models.EntityModel.Inventory.PurchasePayments;
 using System;
 using System.Collections.Generic;
 

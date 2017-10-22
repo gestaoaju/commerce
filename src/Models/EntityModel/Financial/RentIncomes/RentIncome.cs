@@ -5,7 +5,7 @@
 
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
-using Gestaoaju.Models.EntityModel.Commercial.RentPayments;
+using Gestaoaju.Models.EntityModel.Financial.RentPayments;
 using System;
 
 namespace Gestaoaju.Models.EntityModel.Financial.RentIncomes
