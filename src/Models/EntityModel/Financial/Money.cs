@@ -26,16 +26,6 @@ namespace Gestaoaju.Models.EntityModel.Financial
             return money.Amount;
         }
 
-        public Money Add(decimal value)
-        {
-            return Amount + value;
-        }
-
-        public Money AddPercentage(decimal percentValue)
-        {
-            return Amount + Percentage(percentValue);
-        }
-
         public Money Divide(decimal value)
         {
             return Amount / value;
@@ -59,6 +49,16 @@ namespace Gestaoaju.Models.EntityModel.Financial
         public Money SubtractPercentage(decimal percentValue)
         {
             return Amount - Percentage(percentValue);
+        }
+
+        public Money Sum(decimal value)
+        {
+            return Amount + value;
+        }
+
+        public Money SumPercentage(decimal percentValue)
+        {
+            return Amount + Percentage(percentValue);
         }
     }
 }

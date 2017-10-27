@@ -48,8 +48,8 @@ namespace Gestaoaju.Models.EntityModel.Catalog.Products
                     Name = product.Name,
                     Marketed = product.Marketed,
                     TotalAvailable = product.ProductMovements
-                        .Where(stock => stock.StoreId == storeId)
-                        .Sum(stock => (decimal?)stock.Quantity) ?? 0
+                        .Where(productMovement => productMovement.StoreId == storeId)
+                        .Sum(productMovement => (decimal?)productMovement.Quantity) ?? 0
                 });
         }
 

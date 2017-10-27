@@ -22,7 +22,7 @@ namespace Gestaoaju.Models.EntityModel.Commercial.SaleProducts
         public decimal Total { get; set; }
         public decimal? Discount { get; set; }
         public decimal TotalPayable { get; set; }
-        public Guid? StockTransactionId { get; set; }
+        public Guid? TransactionId { get; set; }
         public SaleOrder SaleOrder { get; set; }
         public Product Product { get; set; }
         public Tenant Tenant { get; set; }

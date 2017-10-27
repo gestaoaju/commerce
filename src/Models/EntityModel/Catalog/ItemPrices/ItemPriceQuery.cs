@@ -11,16 +11,6 @@ namespace Gestaoaju.Models.EntityModel.Catalog.ItemPrices
 {
     public static class ItemPriceQuery
     {
-        public static IQueryable<ItemPrice> ForSaleItems(this IQueryable<ItemPrice> itemPrices, IEnumerable<SaleItem> saleItems)
-        {
-            IEnumerable<int> productIds = saleItems.Where(item => item.IsProduct).Select(item => item.Id);
-            IEnumerable<int> serviceIds = saleItems.Where(item => item.IsService).Select(item => item.Id);
-
-            return itemPrices.Where(itemPrice =>
-                productIds.Contains(itemPrice.ProductId.Value) ||
-                serviceIds.Contains(itemPrice.ServiceId.Value));
-        }
-
         public static IQueryable<ItemPrice> OrderedByName(this IQueryable<ItemPrice> items)
         {
             return items.OrderBy(item => item.Name);
@@ -45,6 +35,16 @@ namespace Gestaoaju.Models.EntityModel.Catalog.ItemPrices
             }
 
             return items;
+        }
+
+        public static IQueryable<ItemPrice> WhereSaleItemsIn(this IQueryable<ItemPrice> itemPrices, IEnumerable<SaleItem> saleItems)
+        {
+            IEnumerable<int> productIds = saleItems.Where(item => item.IsProduct).Select(item => item.Id);
+            IEnumerable<int> serviceIds = saleItems.Where(item => item.IsService).Select(item => item.Id);
+
+            return itemPrices.Where(itemPrice =>
+                productIds.Contains(itemPrice.ProductId.Value) ||
+                serviceIds.Contains(itemPrice.ServiceId.Value));
         }
 
         public static IQueryable<ItemPrice> WhereStoreId(this IQueryable<ItemPrice> itemPrices, int storeId)

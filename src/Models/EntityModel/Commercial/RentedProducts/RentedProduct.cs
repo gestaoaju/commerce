@@ -3,12 +3,12 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
-using System;
 using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 using Gestaoaju.Models.EntityModel.Catalog.Products;
 using Gestaoaju.Models.EntityModel.Commercial.RentContracts;
 using Gestaoaju.Models.EntityModel.Inventory;
+using System;
 
 namespace Gestaoaju.Models.EntityModel.Commercial.RentedProducts
 {
@@ -23,22 +23,22 @@ namespace Gestaoaju.Models.EntityModel.Commercial.RentedProducts
         public decimal Total { get; set; }
         public decimal? Discount { get; set; }
         public decimal TotalPayable { get; set; }
-        public Guid? StockTransactionIdIn { get; set; }
-        public Guid? StockTransactionIdOut { get; set; }
+        public Guid? TransactionIdIn { get; set; }
+        public Guid? TransactionIdOut { get; set; }
         public virtual RentContract RentContract { get; set; }
         public virtual Product Product { get; set; }
         public virtual Tenant Tenant { get; set; }
         decimal IOutgoingProduct.Quantity => Quantity;
         decimal IIncomingProduct.Quantity => ReturnedQuantity ?? 0;
-        Guid? IOutgoingProduct.StockTransactionId
+        Guid? IOutgoingProduct.TransactionId
         {
-            get { return StockTransactionIdOut; }
-            set { StockTransactionIdOut = value; }
+            get { return TransactionIdOut; }
+            set { TransactionIdOut = value; }
         }
-        Guid? IIncomingProduct.StockTransactionId
+        Guid? IIncomingProduct.TransactionId
         {
-            get { return StockTransactionIdIn; }
-            set { StockTransactionIdIn = value; }
+            get { return TransactionIdIn; }
+            set { TransactionIdIn = value; }
         }
     }
 }

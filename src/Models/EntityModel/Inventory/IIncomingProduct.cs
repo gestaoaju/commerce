@@ -11,6 +11,6 @@ namespace Gestaoaju.Models.EntityModel.Inventory
     {
         int ProductId { get; }
         decimal Quantity { get; }
-        Guid? StockTransactionId { get; set; }
+        Guid? TransactionId { get; set; }
     }
 }

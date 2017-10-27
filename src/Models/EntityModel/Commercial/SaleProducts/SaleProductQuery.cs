@@ -15,6 +15,7 @@ namespace Gestaoaju.Models.EntityModel.Commercial.SaleProducts
             return saleProducts.Select(saleProduct => new SaleItem
             {
                 Id = saleProduct.ProductId,
+                SaleOrderId = saleProduct.SaleOrderId,
                 IsProduct = true,
                 IsService = false,
                 Name = saleProduct.Product.Name,

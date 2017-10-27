@@ -3,10 +3,12 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
+using System.Linq;
 using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
 using Gestaoaju.Models.EntityModel.Account.PasswordRecoveries;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 using Gestaoaju.Models.EntityModel.Account.Users;
+using Gestaoaju.Models.EntityModel.Catalog.ItemPrices;
 using Gestaoaju.Models.EntityModel.Catalog.ProductPrices;
 using Gestaoaju.Models.EntityModel.Catalog.Products;
 using Gestaoaju.Models.EntityModel.Catalog.ServicePrices;
@@ -52,8 +54,8 @@ namespace Gestaoaju.Models.EntityModel
         public DbSet<PaymentMethod> PaymentMethods  => Set<PaymentMethod>();
         public DbSet<PaymentMethodFee> PaymentMethodFees  => Set<PaymentMethodFee>();
         public DbSet<Product> Products  => Set<Product>();
+        public DbSet<ProductMovement> ProductMovements  => Set<ProductMovement>();
         public DbSet<ProductPrice> ProductPrices  => Set<ProductPrice>();
-        public DbSet<ProductMovement> ProductStockMovements  => Set<ProductMovement>();
         public DbSet<PurchaseExpense> PurchaseExpenses  => Set<PurchaseExpense>();
         public DbSet<PurchasedProduct> PurchasedProducts  => Set<PurchasedProduct>();
         public DbSet<PurchaseOrder> PurchaseOrders  => Set<PurchaseOrder>();
@@ -77,6 +79,7 @@ namespace Gestaoaju.Models.EntityModel
         public DbSet<Tenant> Tenants  => Set<Tenant>();
         public DbSet<User> Users  => Set<User>();
         public DbSet<Wallet> Wallets  => Set<Wallet>();
+        public IQueryable<ItemPrice> ItemPrices => ProductPrices.AsItemPrice().Concat(ServicePrices.AsItemPrice());
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 
