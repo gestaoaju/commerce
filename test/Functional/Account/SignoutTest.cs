@@ -3,10 +3,10 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
-using System.Net;
-using System.Threading.Tasks;
 using Gestaoaju.Factories.Account;
 using Gestaoaju.Fakes;
+using System.Net;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Gestaoaju.Functional.Account
@@ -14,7 +14,7 @@ namespace Gestaoaju.Functional.Account
     public class SignoutTest
     {
         [Fact]
-        public async Task Correctly()
+        public async Task ShouldSignout()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();

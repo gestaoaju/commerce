@@ -18,11 +18,11 @@ namespace Gestaoaju.Functional.Account
     public class SigninTest
     {
         [Fact]
-        public async Task Correctly()
+        public async Task ShouldSignin()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
-            var viewModel = new SigninViewModel { Email = user.Email, Password = UserFactory.Password };
+            var viewModel = UserFactory.SigninViewModel(user);
             var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
             server.AppDbContext.Entry(user).Reload();
@@ -32,7 +32,7 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task WithEmptyParameters()
+        public async Task ShouldNotSigninWithoutRequiredFields()
         {
             var server = new ServerFake();
             var response = await server.CreateClient().PostAsJsonAsync("signin");
@@ -48,11 +48,11 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task WithWrongPassword()
+        public async Task ShouldNotSigninWithWrongPassword()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
-            var viewModel = new SigninViewModel { Email = user.Email, Password = "wrong" };
+            var viewModel = UserFactory.SigninViewModel(user, password: "wrong");
             var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
             server.AppDbContext.Entry(user).Reload();

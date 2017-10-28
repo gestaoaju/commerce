@@ -34,8 +34,8 @@ namespace Gestaoaju.Fakes
         public HttpClient CreateAuthenticatedClient(User user)
         {
             var client = base.CreateClient();
-            var json = new { email = user.Email, password = UserFactory.Password };
-            var response = client.PostAsJsonAsync("signin", json).Result;
+            var viewModel = UserFactory.SigninViewModel(user);
+            var response = client.PostAsJsonAsync("signin", viewModel).Result;
             var header = response.Headers.GetValues("Set-Cookie");
             var cookies = SetCookieHeaderValue.ParseList(header.ToList());
             var cookie = cookies.Single();

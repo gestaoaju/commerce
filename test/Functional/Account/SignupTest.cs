@@ -20,7 +20,7 @@ namespace Gestaoaju.Functional.Account
     public class SignupTest
     {
         [Fact]
-        public async Task Correctly()
+        public async Task ShouldSignup()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.BuildUser();
@@ -34,7 +34,7 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task WithEmailAlreadyTaken()
+        public async Task ShouldNotSignupWithEmailAlreadyTaken()
         {
             var server = new ServerFake();
             var user = server.AppDbContext.CreateUser();
@@ -49,7 +49,7 @@ namespace Gestaoaju.Functional.Account
         }
 
         [Fact]
-        public async Task WithEmptyParameters()
+        public async Task ShouldNotSignupWithoutRequiredFields()
         {
             var server = new ServerFake();
             var response = await server.CreateClient().PostAsJsonAsync("signup");

@@ -8,6 +8,7 @@ using Gestaoaju.Infrastructure.Security;
 using Gestaoaju.Models.EntityModel;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
 using Gestaoaju.Models.EntityModel.Account.Users;
+using Gestaoaju.Models.ViewModel.Account.Users;
 
 namespace Gestaoaju.Factories.Account
 {
@@ -37,6 +38,15 @@ namespace Gestaoaju.Factories.Account
             context.SaveChanges();
 
             return user;
+        }
+
+        public static SigninViewModel SigninViewModel(User user, string password = null)
+        {
+            return new SigninViewModel
+            {
+                Email = user.Email,
+                Password = password ?? UserFactory.Password
+            };
         }
     }
 }
