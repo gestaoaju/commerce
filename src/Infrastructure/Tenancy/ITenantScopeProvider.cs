@@ -5,7 +5,7 @@
 
 namespace Gestaoaju.Infrastructure.Tenancy
 {
-    public interface ITenantIdProvider
+    public interface ITenantScopeProvider
     {
          int CurrentId { get; }
     }

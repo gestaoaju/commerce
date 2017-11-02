@@ -11,9 +11,6 @@ namespace Gestaoaju.Controllers
     public class WebsiteController : Controller
     {
         [HttpGet, AllowAnonymous, Route("")]
-        public IActionResult Home()
-        {
-            return View("~/Views/Website/Home.cshtml");
-        }
+        public IActionResult Home() => View("~/Views/Website/Home.cshtml");
     }
 }

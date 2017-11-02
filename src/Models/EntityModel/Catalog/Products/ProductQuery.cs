@@ -108,5 +108,15 @@ namespace Gestaoaju.Models.EntityModel.Catalog.Products
             
             return products.Where(product => product.InventoryControl != InventoryControl.None);
         }
+
+        public static IQueryable<Product> WhereInventoryControl(this IQueryable<Product> products, InventoryControl? inventoryControl)
+        {
+            if (inventoryControl == null)
+            {
+                return products;
+            }
+
+            return products.Where(product => product.InventoryControl == inventoryControl);
+        }
     }
 }

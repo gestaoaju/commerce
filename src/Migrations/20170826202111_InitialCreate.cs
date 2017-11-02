@@ -31,7 +31,6 @@ namespace Gestaoaju.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(type: "int", nullable: false),
-                    AccessCode = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     LastChangePassword = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastLogin = table.Column<DateTime>(type: "datetime2", nullable: false),

@@ -25,10 +25,7 @@ namespace Gestaoaju.Functional.Account
             var viewModel = UserFactory.SigninViewModel(user);
             var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
-            server.AppDbContext.Entry(user).Reload();
-
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.NotNull(user.AccessCode);
         }
 
         [Fact]
@@ -55,10 +52,7 @@ namespace Gestaoaju.Functional.Account
             var viewModel = UserFactory.SigninViewModel(user, password: "wrong");
             var response = await server.CreateClient().PostAsJsonAsync("signin", viewModel);
 
-            server.AppDbContext.Entry(user).Reload();
-
             Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
-            Assert.Null(user.AccessCode);
         }
     }
 }

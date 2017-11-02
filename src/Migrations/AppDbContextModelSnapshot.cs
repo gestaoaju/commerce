@@ -66,9 +66,6 @@ namespace Gestaoaju.Migrations
 
                     b.Property<int>("TenantId");
 
-                    b.Property<string>("AccessCode")
-                        .HasMaxLength(80);
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(80);

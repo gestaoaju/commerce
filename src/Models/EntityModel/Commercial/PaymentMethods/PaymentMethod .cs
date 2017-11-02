@@ -17,7 +17,7 @@ namespace Gestaoaju.Models.EntityModel.Commercial.PaymentMethods
         public int Id { get; set; }
         public int TenantId { get; set; }
         public string Name { get; set; }
-        public int InstallmentLimit { get; set; }
+        public int MaximumNumberInstallments { get; set; }
         public int? DaysToReceive { get; set; }
         public bool EarlyReceipt { get; set; }
         public bool Active { get; set; }

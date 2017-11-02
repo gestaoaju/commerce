@@ -3,10 +3,11 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
+using Gestaoaju.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 
 namespace Gestaoaju.Filters
 {
@@ -29,8 +30,7 @@ namespace Gestaoaju.Filters
                     .Select(e => e.ErrorMessage)
                     .ToArray();
 
-                filterContext.HttpContext.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
-                filterContext.Result = new JsonResult(errors);
+                filterContext.Result = new ErrorsJson(errors);
             }
         }
     }

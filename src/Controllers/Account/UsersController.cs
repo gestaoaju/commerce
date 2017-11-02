@@ -44,14 +44,11 @@ namespace Gestaoaju.Controllers.Account
         }
 
         [HttpGet, AllowAnonymous, Route("signin")]
-        public async Task<IActionResult> Signin()
+        public IActionResult Signin()
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (await context.Users.WhereAccessCode(User.Claims.NameIdentifier()).AnyAsync())
-                {
-                    return Redirect("/dashboard");
-                }
+                return Redirect("/dashboard");
             }
 
             return View("~/Views/App/Account/Users/Signin.cshtml");
@@ -60,11 +57,7 @@ namespace Gestaoaju.Controllers.Account
         [HttpGet, Route("signout")]
         public async Task<IActionResult> Signout()
         {
-            UserAuthentication authentication = new UserAuthentication(context);
-            await authentication.SignOutAsync(User.Claims.NameIdentifier());
-            
             await HttpContext.SignOutAsync();
-
             return Redirect("/signin");
         }
 

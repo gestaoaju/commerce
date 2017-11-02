@@ -54,27 +54,14 @@ namespace Gestaoaju.Models.ServiceModel.Account
 
                 if (User.Password == passwordHash.ToString())
                 {
-                    User.AccessCode = new AccessCode().ToString();
                     User.LastLogin = DateTime.UtcNow;
-
                     await Context.SaveChangesAsync();
+
+                    return true;
                 }
             }
 
-            return User != null && User.AccessCode != null;
-        }
-
-        public async Task SignOutAsync(string accessCode)
-        {
-            User = await Context.Users
-                .WhereAccessCode(accessCode)
-                .SingleOrDefaultAsync();
-
-            if (User != null)
-            {
-                User.AccessCode = null;
-                await Context.SaveChangesAsync();
-            }
+            return false;
         }
     }
 }

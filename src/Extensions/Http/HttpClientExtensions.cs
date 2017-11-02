@@ -12,22 +12,19 @@ namespace Gestaoaju.Extensions.Http
 {
     public static class HttpClientExtensions
     {
-        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient,
-            string requestUri, object content)
+        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient, string requestUri, object content)
         {
             var jsonContent = JsonConvert.SerializeObject(content);
             return await httpClient.PostAsJsonAsync(requestUri, jsonContent);
         }
 
-        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient,
-            string requestUri, string content)
+        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient, string requestUri, string content)
         {
             var jsonContent = new StringContent(content, Encoding.UTF8, "application/json");
             return await httpClient.PostAsync(requestUri, jsonContent);
         }
 
-        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient,
-            string requestUri)
+        public static async Task<HttpResponseMessage> PostAsJsonAsync(this HttpClient httpClient, string requestUri)
         {
             var jsonContent = new StringContent("{}", Encoding.UTF8, "application/json");
             return await httpClient.PostAsync(requestUri, jsonContent);

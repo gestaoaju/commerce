@@ -12,18 +12,20 @@ namespace Gestaoaju.Results
 {
     public class ErrorsJson : IActionResult
     {
-        private IEnumerable<string> errors;
+        public ErrorsJson() { }
 
         public ErrorsJson(params string[] errors)
         {
-            this.errors = errors;
+            Errors = errors;
         }
+
+        public ICollection<string> Errors { get; set; }
 
         public async Task ExecuteResultAsync(ActionContext context)
         {
-            var jsonResult = new JsonResult(errors);
+            var jsonResult = new JsonResult(this);
             jsonResult.StatusCode = StatusCodes.Status422UnprocessableEntity;
-            
+
             await jsonResult.ExecuteResultAsync(context);
         }
     }

@@ -7,9 +7,11 @@ using Gestaoaju.Extensions.DependencyInjection;
 using Gestaoaju.Infrastructure.Logging;
 using Gestaoaju.Infrastructure.Mail;
 using Gestaoaju.Infrastructure.Tasks;
+using Gestaoaju.Infrastructure.Tenancy;
 using Gestaoaju.Models.EntityModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,9 +53,12 @@ namespace Gestaoaju
             });
 
             services.AddTransient<AppDbContext>();
+            services.AddTransient<TenantDbContext>();
             services.AddTransient<IErrorLogger, SentryLogger>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IMailer, SmtpMailer>();
             services.AddSingleton<ITaskHandler, TaskHandler>();
+            services.AddTransient<ITenantScopeProvider, TenantScopeHttpProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

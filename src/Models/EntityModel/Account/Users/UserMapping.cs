@@ -29,7 +29,6 @@ namespace Gestaoaju.Models.EntityModel.Account.Users
             entity.Property(p => p.Email).HasMaxLength(80).IsRequired();
             entity.Property(p => p.Salt).HasMaxLength(50).IsRequired();
             entity.Property(p => p.Password).HasMaxLength(255).IsRequired();
-            entity.Property(p => p.AccessCode).HasMaxLength(80);
             entity.Property(p => p.LastLogin).IsRequired();
             entity.Property(p => p.LastChangePassword).IsRequired();
 

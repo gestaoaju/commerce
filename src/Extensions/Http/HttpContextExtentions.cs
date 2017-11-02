@@ -17,8 +17,9 @@ namespace Gestaoaju.Extensions.Http
         public static async Task SignInAsync(this HttpContext httpContext, User user)
         {
             var scheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            var claim = new Claim(ClaimTypes.NameIdentifier, user.AccessCode);
-            var identity = new ClaimsIdentity(new[] { claim }, scheme);
+            var userId = new Claim("UserId", user.Id.ToString());
+            var tenantId = new Claim("TenantId", user.TenantId.ToString());
+            var identity = new ClaimsIdentity(new[] { userId, tenantId }, scheme);
             var principal = new ClaimsPrincipal(identity);
 
             await httpContext.SignInAsync(scheme, principal);

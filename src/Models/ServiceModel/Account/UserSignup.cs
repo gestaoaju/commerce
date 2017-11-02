@@ -33,7 +33,6 @@ namespace Gestaoaju.Models.ServiceModel.Account
 
             if (!EmailAlreadyTaken)
             {
-                User.AccessCode = new AccessCode().ToString();
                 User.LastLogin = DateTime.UtcNow;
                 User.Salt = Guid.NewGuid().ToString("N");
                 User.Password = new Sha256Hash(User.Password, User.Salt).ToString();

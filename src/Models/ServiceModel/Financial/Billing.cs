@@ -23,13 +23,13 @@ namespace Gestaoaju.Models.ServiceModel.Financial
         private void AssignPaymentMethodFee(IPayment payment)
         {
             PaymentMethodFee paymentMethodFee = payment.PaymentMethod.PaymentMethodFees
-                .OrderByDescending(fee => fee.MinimumInstallment)
-                .FirstOrDefault(fee => payment.NumberOfInstallments >= fee.MinimumInstallment);
+                .OrderByDescending(fee => fee.MinimumNumberInstallments)
+                .FirstOrDefault(fee => payment.NumberOfInstallments >= fee.MinimumNumberInstallments);
 
             if (paymentMethodFee != null)
             {
-                payment.FeePercentage = paymentMethodFee.FeePercentage;
-                payment.FeeFixedValue = paymentMethodFee.FeeFixedValue;
+                payment.FeePercentage = paymentMethodFee.Percentage;
+                payment.FeeFixedValue = paymentMethodFee.FixedValue;
             }
         }
 

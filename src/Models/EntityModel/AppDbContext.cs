@@ -3,7 +3,6 @@
  * Licensed under MIT (https://github.com/gestaoaju/commerce/blob/master/LICENSE).
  */
 
-using System.Linq;
 using Gestaoaju.Models.EntityModel.Account.ClosureRequests;
 using Gestaoaju.Models.EntityModel.Account.PasswordRecoveries;
 using Gestaoaju.Models.EntityModel.Account.Tenants;
@@ -40,46 +39,46 @@ using Gestaoaju.Models.EntityModel.Manage.TeamMembers;
 using Gestaoaju.Models.EntityModel.Manage.TeamRules;
 using Gestaoaju.Models.EntityModel.Manage.Teams;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Gestaoaju.Models.EntityModel
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<ClosureRequest> ClosureRequests  => Set<ClosureRequest>();
-        public DbSet<Customer> Customers  => Set<Customer>();
-        public DbSet<FixedExpense> FixedExpenses  => Set<FixedExpense>();
-        public DbSet<OtherCashActivity> OtherCashActivities  => Set<OtherCashActivity>();
-        public DbSet<Partner> Partners  => Set<Partner>();
-        public DbSet<PasswordRecovery> PasswordRecoveries  => Set<PasswordRecovery>();
-        public DbSet<PaymentMethod> PaymentMethods  => Set<PaymentMethod>();
-        public DbSet<PaymentMethodFee> PaymentMethodFees  => Set<PaymentMethodFee>();
-        public DbSet<Product> Products  => Set<Product>();
-        public DbSet<ProductMovement> ProductMovements  => Set<ProductMovement>();
-        public DbSet<ProductPrice> ProductPrices  => Set<ProductPrice>();
-        public DbSet<PurchaseExpense> PurchaseExpenses  => Set<PurchaseExpense>();
-        public DbSet<PurchasedProduct> PurchasedProducts  => Set<PurchasedProduct>();
-        public DbSet<PurchaseOrder> PurchaseOrders  => Set<PurchaseOrder>();
-        public DbSet<PurchasePayment> PurchasePayments  => Set<PurchasePayment>();
-        public DbSet<RentContract> RentContracts  => Set<RentContract>();
-        public DbSet<RentIncome> RentIncomes  => Set<RentIncome>();
-        public DbSet<RentedProduct> RentedProducts  => Set<RentedProduct>();
-        public DbSet<RentPayment> RentPayments  => Set<RentPayment>();
-        public DbSet<SaleOrder> SaleOrders  => Set<SaleOrder>();
-        public DbSet<SaleIncome> SaleIncomes  => Set<SaleIncome>();
-        public DbSet<SalePayment> SalePayments  => Set<SalePayment>();
-        public DbSet<SaleProduct> SaleProducts  => Set<SaleProduct>();
-        public DbSet<SaleService> SaleServices  => Set<SaleService>();
-        public DbSet<Service> Services  => Set<Service>();
-        public DbSet<ServicePrice> ServicePrices  => Set<ServicePrice>();
-        public DbSet<Store> Stores  => Set<Store>();
-        public DbSet<Supplier> Suppliers  => Set<Supplier>();
-        public DbSet<Team> Teams  => Set<Team>();
-        public DbSet<TeamMember> TeamMembers  => Set<TeamMember>();
-        public DbSet<TeamRule> TeamRules  => Set<TeamRule>();
-        public DbSet<Tenant> Tenants  => Set<Tenant>();
-        public DbSet<User> Users  => Set<User>();
-        public DbSet<Wallet> Wallets  => Set<Wallet>();
-        public IQueryable<ItemPrice> ItemPrices => ProductPrices.AsItemPrice().Concat(ServicePrices.AsItemPrice());
+        public DbSet<ClosureRequest> ClosureRequests { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<FixedExpense> FixedExpenses { get; set; }
+        public DbSet<OtherCashActivity> OtherCashActivities { get; set; }
+        public DbSet<Partner> Partners { get; set; }
+        public DbSet<PasswordRecovery> PasswordRecoveries { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<PaymentMethodFee> PaymentMethodFees { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductMovement> ProductMovements { get; set; }
+        public DbSet<ProductPrice> ProductPrices { get; set; }
+        public DbSet<PurchaseExpense> PurchaseExpenses { get; set; }
+        public DbSet<PurchasedProduct> PurchasedProducts { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<PurchasePayment> PurchasePayments { get; set; }
+        public DbSet<RentContract> RentContracts { get; set; }
+        public DbSet<RentIncome> RentIncomes { get; set; }
+        public DbSet<RentedProduct> RentedProducts { get; set; }
+        public DbSet<RentPayment> RentPayments { get; set; }
+        public DbSet<SaleOrder> SaleOrders { get; set; }
+        public DbSet<SaleIncome> SaleIncomes { get; set; }
+        public DbSet<SalePayment> SalePayments { get; set; }
+        public DbSet<SaleProduct> SaleProducts { get; set; }
+        public DbSet<SaleService> SaleServices { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServicePrice> ServicePrices { get; set; }
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<TeamRule> TeamRules { get; set; }
+        public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 

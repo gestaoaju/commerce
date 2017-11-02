@@ -18,7 +18,7 @@ namespace Gestaoaju.Models.EntityModel.Commercial.PaymentMethodFees
             {
                 p.TenantId,
                 p.PaymentMethodId,
-                p.MinimumInstallment
+                p.MinimumNumberInstallments
             });
         }
     }

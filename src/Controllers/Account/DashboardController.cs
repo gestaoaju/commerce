@@ -5,7 +5,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gestaoaju.Controllers.App
+namespace Gestaoaju.Controllers.Account
 {
     [Route("[controller]")]
     public class DashboardController : Controller

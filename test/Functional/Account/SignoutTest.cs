@@ -20,11 +20,8 @@ namespace Gestaoaju.Functional.Account
             var user = server.AppDbContext.CreateUser();
             var response = await server.CreateAuthenticatedClient(user).GetAsync("signout");
 
-            server.AppDbContext.Entry(user).Reload();
-
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
             Assert.Equal("/signin", response.Headers.Location.ToString());
-            Assert.Null(user.AccessCode);
         }
     }
 }
